@@ -32,5 +32,21 @@ Window {
             font.bold: true
             font.family: "sans-serif"
         }
+        Rectangle {
+            width: 200; height: 100
+            color: "green"
+
+            MouseArea {
+                anchors.fill: parent
+                onPressed: {
+                    // This happens the split-second you click down
+                    vehicle.setGasPressed(true)
+                }
+                onReleased: {
+                    // This happens the split-second you let go
+                    vehicle.setGasPressed(false)
+                }
+            }
+        }
     }
 }
