@@ -49,6 +49,8 @@ void VehicleSimulator::updateSimulation()
     emit accelerationChanged();
     emit throttleChanged();
     emit brakeChanged();
+    emit estimatedRangeChanged();
+    emit motorTemperatureChanged();
 }
 
 void VehicleSimulator::processMovement()
@@ -85,6 +87,14 @@ void VehicleSimulator::processEnergy()
     double drain = 0.1 + (m_speed * 0.02);
     m_soc -= drain;
     m_soc = std::clamp(m_soc, 0.0, 100.0);
+
+    if (m_throttle > 0.5) {
+        m_motorTemperature += 0.2; // Heat up under load
+    } else {
+        m_motorTemperature -= 0.1; // Cool down naturally
+    }
+    m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);
+    m_estimatedRange = m_soc * 4.0;
 }
 
 void VehicleSimulator::setGasPressed(bool pressed)
