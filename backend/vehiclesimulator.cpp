@@ -39,37 +39,58 @@ void VehicleSimulator::setSoc(double newSoc)
 
 void VehicleSimulator::updateSimulation()
 {
-    float natural_friction = 0.5;
-    float force = 0.0;
-    double currentSoc = soc();
-    double currentSpeed = speed();
+    // Run the sub-systems
+    processMovement();
+    processEnergy();
+
+    // Tell QML that properties updated
+    emit speedChanged();
+    emit socChanged();
+    emit accelerationChanged();
+    emit throttleChanged();
+    emit brakeChanged();
+}
+
+void VehicleSimulator::processMovement()
+{
+    if (m_gasPressed) {
+        m_throttle += 0.1;
+    }
+    else {
+        m_throttle -= 0.15;
+    }
+    m_throttle = std::clamp(m_throttle, 0.0f, 1.0f);
+
+    if (m_brakePressed) {
+        m_brake += 2.0;
+    }
+    else {
+        m_brake -= 2.0;
+    }
+    m_brake = std::clamp(m_brake, 0.0f, 1.0f);
+
+    float naturalFriction = 0.5;
     float max_acceleration = 4.2;
     float max_brakingForce = 12.0;
 
-    float drain = 0.1 + (currentSpeed * 0.02);
-    currentSoc -= drain;
+    m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
+    m_speed += m_acceleration;
 
-    if (currentSoc > 0) {
-        if (m_throttle >= 0.0 && m_throttle <= 1.0 && m_brake >= 0.0 && m_brake <= 1.0) {
-            /* basically max throttle gives full acceleration, half throttle gives half acceleration, but we also
-             * have natural drag which we add in every calculation to make things more realistic.
-             * we also have a maximum braking force, which makes the car brake faster.
-             */
-            force = (max_acceleration * m_throttle) - max_brakingForce * m_brake - natural_friction;
-            currentSpeed = currentSpeed + force;
-        }
-    }
-    if (currentSoc < 0) {
-        currentSoc = 0;
-        currentSpeed = currentSpeed - 18.6;
-    }
+    // Safety clamp so the car doesn't go backward from friction or exceed top speed
+    m_speed = std::clamp(m_speed, 0.0, 220.0);
+}
 
-    currentSpeed = std::clamp(currentSpeed, 0.0, 220.0);
-    currentSoc = std::clamp(currentSoc, -0.1, 100.0);
+void VehicleSimulator::processEnergy()
+{
+    // Battery drain math not complete yet
+}
 
-    setSoc(currentSoc);
-    setSpeed(currentSpeed);
+void VehicleSimulator::setGasPressed(bool pressed)
+{
+    m_gasPressed = pressed;
+}
 
-    m_acceleration = force;
-    emit accelerationChanged();
+void VehicleSimulator::setBrakePressed(bool pressed)
+{
+    m_brakePressed = pressed;
 }

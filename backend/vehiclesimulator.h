@@ -49,6 +49,8 @@ public slots:
     void updateSimulation();
     void setSpeed(double newSpeed);
     void setSoc(double newSoc);
+    void setGasPressed(bool pressed);
+    void setBrakePressed(bool pressed);
 
 signals:
     void speedChanged();
@@ -68,10 +70,14 @@ signals:
 
 private:
     // Default starting values for the physical machine
+    void processMovement();
+    void processEnergy();
     double m_speed = 0.0f;
     float m_acceleration = 0.0f;
     float m_throttle = 0.0f;
     float m_brake = 0.0f;
+    bool m_gasPressed = false;
+    bool m_brakePressed = false;
     DriveMode m_driveMode = DriveMode::Normal;
 
     double m_soc = 100.0f;
