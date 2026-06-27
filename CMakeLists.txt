@@ -16,12 +16,19 @@ endif()
 qt_add_executable(appev_simulator
     main.cpp
 )
+# Tell CMake to strip the "ui/" prefix inside the QML module registry
+set_source_files_properties(ui/Main.qml PROPERTIES
+    QT_RESOURCE_ALIAS "Main.qml"
+)
 
 qt_add_qml_module(appev_simulator
     URI ev_simulator
+    VERSION 1.0
     QML_FILES
-        Main.qml
-        SOURCES vehiclesimulator.h vehiclesimulator.cpp
+        ui/Main.qml
+    SOURCES
+        backend/vehiclesimulator.h
+        backend/vehiclesimulator.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -34,6 +41,8 @@ set_target_properties(appev_simulator PROPERTIES
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
+
+target_include_directories(appev_simulator PRIVATE backend)
 
 target_link_libraries(appev_simulator
     PRIVATE Qt6::Quick
