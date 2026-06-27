@@ -82,7 +82,9 @@ void VehicleSimulator::processMovement()
 
 void VehicleSimulator::processEnergy()
 {
-    // Battery drain math not complete yet
+    double drain = 0.1 + (m_speed * 0.02);
+    m_soc -= drain;
+    m_soc = std::clamp(m_soc, 0.0, 100.0);
 }
 
 void VehicleSimulator::setGasPressed(bool pressed)
