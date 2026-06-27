@@ -1,11 +1,12 @@
 #include "vehiclesimulator.h"
+#include <algorithm>
 
 VehicleSimulator::VehicleSimulator(QObject *parent)
     : QObject(parent)
 {
-    m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &VehicleSimulator::updateSimulation);
-    m_timer->start(100);
+    m_simTimer = new QTimer(this);
+    connect(m_simTimer, &QTimer::timeout, this, &VehicleSimulator::updateSimulation);
+    m_simTimer->start(100);
 }
 
 double VehicleSimulator::speed() const
@@ -38,10 +39,10 @@ void VehicleSimulator::setSoc(double newSoc)
 
 void VehicleSimulator::updateSimulation()
 {
-    double friction = 18.6;
+    float friction = 18.6;
     double currentSoc = soc();
     double currentSpeed = speed();
-    double drain = 0.1 + (currentSpeed * 0.02);
+    float drain = 0.1 + (currentSpeed * 0.02);
     currentSoc -= drain;
 
     if (currentSoc > 0) {
