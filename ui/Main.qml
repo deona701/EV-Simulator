@@ -3,11 +3,12 @@ import QtQuick.Window
 import ev_simulator
 
 Window {
+    id: root
     width: 1920
     height: 720
     visible: true
-    title: "EV Ultrawide Cockpit"
-    color: "#050505" // Deep black
+    title: "EV Cyber-Neon Custom Cockpit"
+    color: "#0a0b0e" // Deep cyber black
 
     VehicleSimulator {
         id: vehicle
@@ -36,5 +37,12 @@ Window {
             height: parent.height
             color: "#111a11" // Temporary dark green tint
         }
+    }
+
+    // HIDDEN INTERACTION: Press spacebar to accelerate, let go to brake
+    Item {
+        focus: true
+        Keys.onPressed: (event) => { if (event.key === Qt.Key_Space) vehicle.setGasPressed(true); }
+        Keys.onReleased: (event) => { if (event.key === Qt.Key_Space) vehicle.setGasPressed(false); }
     }
 }
