@@ -3,50 +3,38 @@ import QtQuick.Window
 import ev_simulator
 
 Window {
-    width: 800
-    height: 480
+    width: 1920
+    height: 720
     visible: true
-    title: "EV Simulator Core"
-    color: "#111111"
+    title: "EV Ultrawide Cockpit"
+    color: "#050505" // Deep black
 
     VehicleSimulator {
         id: vehicle
     }
 
-    Column {
-        anchors.centerIn: parent
-        spacing: 20
+    Row {
+        anchors.fill: parent
 
-        Text {
-            text: vehicle.speed.toFixed(0) + " KM/H"
-            color: "#00ffff"
-            font.pointSize: 48
-            font.bold: true
-            font.family: "sans-serif"
-        }
-
-        Text {
-            text: vehicle.soc.toFixed(0) + " %"
-            color: "#00ffff"
-            font.pointSize: 48
-            font.bold: true
-            font.family: "sans-serif"
-        }
+        // LEFT ZONE (Speed & Motion) - 30%
         Rectangle {
-            width: 200; height: 100
-            color: "green"
+            width: parent.width * 0.3
+            height: parent.height
+            color: "#1a1111" // Temporary dark red tint
+        }
 
-            MouseArea {
-                anchors.fill: parent
-                onPressed: {
-                    // This happens the split-second you click down
-                    vehicle.setGasPressed(true)
-                }
-                onReleased: {
-                    // This happens the split-second you let go
-                    vehicle.setGasPressed(false)
-                }
-            }
+        // CENTER ZONE (Road & Environment) - 40%
+        Rectangle {
+            width: parent.width * 0.4
+            height: parent.height
+            color: "#11111a" // Temporary dark blue tint
+        }
+
+        // RIGHT ZONE (Power & Battery) - 30%
+        Rectangle {
+            width: parent.width * 0.3
+            height: parent.height
+            color: "#111a11" // Temporary dark green tint
         }
     }
 }
