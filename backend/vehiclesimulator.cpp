@@ -79,6 +79,13 @@ void VehicleSimulator::processMovement()
         m_soc = 0;
         m_speed *= 0.95;
     }
+    if (m_throttle == 0.0f) {
+        naturalFriction += 0.2;
+        m_regenActive = true;
+    }
+    if (m_throttle > 0.0f) {
+        m_regenActive = false;
+    }
     else {
         m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
         m_speed += m_acceleration;
@@ -100,6 +107,10 @@ void VehicleSimulator::processEnergy()
         m_motorTemperature -= 0.1; // Cool down naturally
     }
     m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);
+
+    if (m_regenActive == true) {
+        m_soc += 0.002;
+    }
     m_estimatedRange = m_soc * 4.0;
 }
 
