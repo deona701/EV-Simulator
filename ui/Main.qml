@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Window
+import QtQuick.Layouts
 import ev_simulator
 
 Window {
@@ -16,13 +17,44 @@ Window {
 
     Row {
         anchors.fill: parent
+        anchors.margins: 25
+        spacing: 25
 
-        // LEFT ZONE (Speed & Motion) - 30%
+        // LEFT ZONE (Speed & Motion) - 30% of the screen
         Rectangle {
             width: parent.width * 0.3
             height: parent.height
-            color: "#1a1111" // Temporary dark red tint
-        }
+            color: "transparent"
+
+            Column {
+                anchors.fill: parent
+                spacing: 25
+                topPadding: 20
+
+            // SPEED CARD
+            Rectangle {
+                width: parent.width * 0.85
+                height: parent.height * 0.52
+                anchors.horizontalCenter: parent.horizontalCenter
+                radius: 30
+                color: "#0a0b0e"
+                border.color: "#00ffff"
+                border.width: 2
+            }
+
+            // BATTERY CARD
+            Rectangle {
+                width: parent.width * 0.85
+                height: parent.height * 0.38
+                anchors.horizontalCenter: parent.horizontalCenter
+                radius: 30
+                color: "#0a0b0e"
+                border.color: "#00ffff"
+                border.width: 2
+                    }
+                }
+            }
+
 
         // CENTER ZONE (Road & Environment) - 40%
         Rectangle {
