@@ -42,16 +42,49 @@ Window {
                 border.color: "#00ffff"
                 border.width: 2
 
-                Rectangle {
-                        width: 300
-                        height: 300
-                        radius: 150
-                        anchors.centerIn: parent
+            Rectangle {
+                width: 300
+                height: 300
+                radius: 150
+                anchors.centerIn: parent
 
-                        color: "transparent"
-                        border.color: "#00ffff"
-                        border.width: 4
+                color: "transparent"
+                border.color: "#00ffff"
+                border.width: 4
+
+                // Speedometer Circle Shape
+                Repeater {
+                    model: 11
+
+                    Rectangle {
+                    width: 2
+                    height: 150
+                    color: "transparent"
+                    anchors.bottom: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    transformOrigin: Item.Bottom
+                    rotation: index * 30
+
+                    Rectangle {
+                        width: 2
+                        height: 10
+                        color: "#00ffff"
+                        anchors.top: parent.top                        }
                     }
+                }
+            }
+                // Speedometer Needle
+                Rectangle {
+                    width: 4
+                    height: 120
+                    color: "#ff00ff"
+                    anchors.bottom: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    transformOrigin: Item.Bottom
+                    rotation: vehicle.speed - 130
+                }
+
+                // Speedometer Speed Value
                 Text {
                     text: Math.round(vehicle.speed)
                     color: "#00ffff"
