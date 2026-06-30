@@ -64,7 +64,7 @@ Window {
                     anchors.bottom: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
-                    rotation: index * 30
+                    rotation: (index * 26) - 130
 
                     Rectangle {
                         width: 2
@@ -91,7 +91,10 @@ Window {
                     color: "#00ffff"
                     font.pixelSize: 34
                     font.bold: true
-                    anchors.centerIn: parent
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 45
                 }
             }
 
