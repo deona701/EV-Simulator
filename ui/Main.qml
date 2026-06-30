@@ -55,7 +55,7 @@ Window {
 
                 // Speedometer Ticks
                 Repeater {
-                    model: 11
+                    model: 12
 
                     Rectangle {
                     width: 2
@@ -64,7 +64,7 @@ Window {
                     anchors.bottom: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
-                    rotation: (index * 26) - 130
+                    rotation: -110 + (index * 20)
 
                     Rectangle {
                         width: 2
@@ -82,7 +82,7 @@ Window {
                     anchors.bottom: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
-                    rotation: vehicle.speed - 130
+                    rotation: vehicle.speed - 110
                 }
 
                 // Speedometer Speed Value
