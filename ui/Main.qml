@@ -42,6 +42,7 @@ Window {
                 border.color: "#00ffff"
                 border.width: 2
 
+            // Speedometer Circle Shape
             Rectangle {
                 width: 300
                 height: 300
@@ -52,7 +53,7 @@ Window {
                 border.color: "#00ffff"
                 border.width: 4
 
-                // Speedometer Circle Shape
+                // Speedometer Ticks
                 Repeater {
                     model: 11
 
