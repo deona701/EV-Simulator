@@ -40,6 +40,14 @@ Window {
                 color: "#0a0b0e"
                 border.color: "#00ffff"
                 border.width: 2
+
+                Text {
+                    text: Math.round(vehicle.speed)
+                    color: "#00ffff"
+                    font.pixelSize: 34
+                    font.bold: true
+                    anchors.centerIn: parent
+                }
             }
 
             // BATTERY CARD
