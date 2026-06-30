@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Layouts
 import ev_simulator
+import QtQuick.Shapes 1.15
 
 Window {
     id: root
@@ -41,6 +42,16 @@ Window {
                 border.color: "#00ffff"
                 border.width: 2
 
+                Rectangle {
+                        width: 300
+                        height: 300
+                        radius: 150
+                        anchors.centerIn: parent
+
+                        color: "transparent"
+                        border.color: "#00ffff"
+                        border.width: 4
+                    }
                 Text {
                     text: Math.round(vehicle.speed)
                     color: "#00ffff"
