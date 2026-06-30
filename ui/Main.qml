@@ -22,7 +22,7 @@ Window {
 
         // LEFT ZONE (Speed & Motion) - 30% of the screen
         Rectangle {
-            width: parent.width * 0.3
+            width: (parent.width - 50) * 0.3
             height: parent.height
             color: "transparent"
 
@@ -51,25 +51,108 @@ Window {
                 color: "#0a0b0e"
                 border.color: "#00ffff"
                 border.width: 2
-                    }
                 }
             }
+        }
 
 
         // CENTER ZONE (Road & Environment) - 40%
         Rectangle {
-            width: parent.width * 0.4
+            width: (parent.width - 50) * 0.4
             height: parent.height
-            color: "#11111a" // Temporary dark blue tint
+            color: "#0a0b0e"
+
+            Column {
+                anchors.fill: parent
+                spacing: 25
+                topPadding: 20
+
+            // MAIN SCREEN
+            Rectangle {
+                width: parent.width * 1
+                height: parent.height * 0.62
+                anchors.horizontalCenter: parent.horizontalCenter
+                radius: 30
+                color: "#0a0b0e"
+                border.color: "#00ffff"
+                border.width: 2
+            }
+
+            // BUTTONS
+            Rectangle {
+                width: parent.width * 0.95
+                height: parent.height * 0.28
+                anchors.horizontalCenter: parent.horizontalCenter
+                radius: 30
+                color: "#0a0b0e"
+                border.color: "#00ffff"
+                border.width: 2
+                }
+            }
         }
 
         // RIGHT ZONE (Power & Battery) - 30%
         Rectangle {
-            width: parent.width * 0.3
+            width: (parent.width - 50) * 0.3
             height: parent.height
-            color: "#111a11" // Temporary dark green tint
+            color: "#0a0b0e"
+
+            Column {
+                anchors.fill: parent
+                spacing: 25
+                topPadding: 20
+
+            // VOLUME SLIDER
+            Rectangle {
+                width: parent.width * 0.85
+                height: parent.height * 0.32
+                anchors.horizontalCenter: parent.horizontalCenter
+                radius: 30
+                color: "#0a0b0e"
+                border.color: "#00ffff"
+                border.width: 2
+            }
+
+            Row {
+                width: parent.width * 0.85
+                height: parent.height * 0.25
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 25
+
+                // TEMPERATURE
+                Rectangle {
+                    width: (parent.width - parent.spacing) / 2
+                    height: parent.height
+                    radius: 30
+                    color: "#0a0b0e"
+                    border.color: "#00ffff"
+                    border.width: 2
+                }
+
+                // SEATS
+                Rectangle {
+                    width: (parent.width - parent.spacing) / 2
+                    height: parent.height
+                    radius: 30
+                    color: "#0a0b0e"
+                    border.color: "#00ffff"
+                    border.width: 2
+                }
+            }
+
+            // SETTINGS
+            Rectangle {
+                width: parent.width * 0.85
+                height: parent.height * 0.25
+                anchors.horizontalCenter: parent.horizontalCenter
+                radius: 30
+                color: "#0a0b0e"
+                border.color: "#00ffff"
+                border.width: 2
+            }
         }
     }
+}
 
     // HIDDEN INTERACTION: Press spacebar to accelerate, let go to brake
     Item {
