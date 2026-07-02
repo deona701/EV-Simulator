@@ -20,7 +20,7 @@ Window {
     height: 720
     visible: true
     title: "EV Cyber-Neon Custom Cockpit"
-    color: "#0a0b0e" // Deep cyber black
+    color: bgPrimary
 
     VehicleSimulator {
         id: vehicle
@@ -48,8 +48,8 @@ Window {
                 height: parent.height * 0.52
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
-                color: "#0a0b0e"
-                border.color: "#00ffff"
+                color: bgPrimary
+                border.color: accentNormal
                 border.width: 2
 
             // Speedometer Circle Shape
@@ -60,7 +60,7 @@ Window {
                 anchors.centerIn: parent
 
                 color: "transparent"
-                border.color: "#00ffff"
+                border.color: accentNormal
                 border.width: 4
 
                 // Speedometer Ticks
@@ -79,7 +79,7 @@ Window {
                     Rectangle {
                         width: 2
                         height: 10
-                        color: "#00ffff"
+                        color: accentNormal
                         anchors.top: parent.top                        }
                     }
                 }
@@ -88,7 +88,7 @@ Window {
                 Rectangle {
                     width: 4
                     height: 120
-                    color: "#ff00ff"
+                    color: accentNormal
                     anchors.bottom: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
@@ -105,7 +105,7 @@ Window {
                 // Speedometer Speed Value
                 Text {
                     text: Math.round(vehicle.speed)
-                    color: "#00ffff"
+                    color: accentNormal
                     font.pixelSize: 34
                     font.bold: true
 
@@ -121,8 +121,8 @@ Window {
                 height: parent.height * 0.38
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
-                color: "#0a0b0e"
-                border.color: "#00ffff"
+                color: bgPrimary
+                border.color: accentNormal
                 border.width: 2
                 }
             }
@@ -133,7 +133,7 @@ Window {
         Rectangle {
             width: (parent.width - 50) * 0.4
             height: parent.height
-            color: "#0a0b0e"
+            color: bgPrimary
 
             Column {
                 anchors.fill: parent
@@ -146,8 +146,8 @@ Window {
                 height: parent.height * 0.62
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
-                color: "#0a0b0e"
-                border.color: "#00ffff"
+                color: bgPrimary
+                border.color: accentNormal
                 border.width: 2
             }
 
@@ -157,8 +157,8 @@ Window {
                 height: parent.height * 0.28
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
-                color: "#0a0b0e"
-                border.color: "#00ffff"
+                color: bgPrimary
+                border.color: accentNormal
                 border.width: 2
                 }
             }
@@ -168,7 +168,7 @@ Window {
         Rectangle {
             width: (parent.width - 50) * 0.3
             height: parent.height
-            color: "#0a0b0e"
+            color: bgPrimary
 
             Column {
                 anchors.fill: parent
@@ -181,8 +181,8 @@ Window {
                 height: parent.height * 0.32
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
-                color: "#0a0b0e"
-                border.color: "#00ffff"
+                color: bgPrimary
+                border.color: accentNormal
                 border.width: 2
             }
 
@@ -197,8 +197,8 @@ Window {
                     width: (parent.width - parent.spacing) / 2
                     height: parent.height
                     radius: 30
-                    color: "#0a0b0e"
-                    border.color: "#00ffff"
+                    color: bgPrimary
+                    border.color: accentNormal
                     border.width: 2
                 }
 
@@ -207,8 +207,8 @@ Window {
                     width: (parent.width - parent.spacing) / 2
                     height: parent.height
                     radius: 30
-                    color: "#0a0b0e"
-                    border.color: "#00ffff"
+                    color: bgPrimary
+                    border.color: accentNormal
                     border.width: 2
                 }
             }
@@ -219,8 +219,8 @@ Window {
                 height: parent.height * 0.25
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
-                color: "#0a0b0e"
-                border.color: "#00ffff"
+                color: bgPrimary
+                border.color: accentNormal
                 border.width: 2
             }
         }
