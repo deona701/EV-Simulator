@@ -19,7 +19,7 @@ Window {
     width: 1920
     height: 720
     visible: true
-    title: "EV Cyber-Neon Custom Cockpit"
+    title: "EV Simulator"
     color: bgPrimary
 
     VehicleSimulator {
@@ -49,7 +49,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
                 color: bgPrimary
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 2
 
             // Speedometer Circle Shape
@@ -60,7 +60,7 @@ Window {
                 anchors.centerIn: parent
 
                 color: "transparent"
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 4
 
                 // Speedometer Ticks
@@ -79,7 +79,7 @@ Window {
                     Rectangle {
                         width: 2
                         height: 10
-                        color: accentNormal
+                        color: currentAccent
                         anchors.top: parent.top                        }
                     }
                 }
@@ -88,7 +88,7 @@ Window {
                 Rectangle {
                     width: 4
                     height: 120
-                    color: accentNormal
+                    color: currentAccent
                     anchors.bottom: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
@@ -105,7 +105,7 @@ Window {
                 // Speedometer Speed Value
                 Text {
                     text: Math.round(vehicle.speed)
-                    color: accentNormal
+                    color: currentAccent
                     font.pixelSize: 34
                     font.bold: true
 
@@ -122,7 +122,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
                 color: bgPrimary
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 2
                 }
             }
@@ -147,7 +147,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
                 color: bgPrimary
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 2
             }
 
@@ -158,7 +158,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
                 color: bgPrimary
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 2
                 }
             }
@@ -182,7 +182,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
                 color: bgPrimary
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 2
             }
 
@@ -198,7 +198,7 @@ Window {
                     height: parent.height
                     radius: 30
                     color: bgPrimary
-                    border.color: accentNormal
+                    border.color: currentAccent
                     border.width: 2
                 }
 
@@ -208,7 +208,7 @@ Window {
                     height: parent.height
                     radius: 30
                     color: bgPrimary
-                    border.color: accentNormal
+                    border.color: currentAccent
                     border.width: 2
                 }
             }
@@ -220,7 +220,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: 30
                 color: bgPrimary
-                border.color: accentNormal
+                border.color: currentAccent
                 border.width: 2
             }
         }
