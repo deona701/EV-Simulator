@@ -5,6 +5,16 @@ import ev_simulator
 import QtQuick.Shapes 1.15
 
 Window {
+    // Core Color Palette
+    property color bgPrimary: "#0a0b0e"
+    property color accentNormal: "#00ffff"
+    property color accentSport: "#e43131"
+    property color accentRegen: "#21d8a2"
+    property color textNeutral: "#ffffff"
+
+    // Active Color (Switches based on mode)
+    property color currentAccent: accentNormal
+
     id: root
     width: 1920
     height: 720
@@ -83,6 +93,13 @@ Window {
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
                     rotation: vehicle.speed - 110
+
+                    Behavior on rotation {
+                        NumberAnimation {
+                            duration: 250
+                            easing.type: Easing.OutQuad
+                        }
+                    }
                 }
 
                 // Speedometer Speed Value
