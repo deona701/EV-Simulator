@@ -9,11 +9,11 @@ Window {
     property color bgPrimary: "#0a0b0e"
     property color accentNormal: "#00ffff"
     property color accentSport: "#e43131"
-    property color accentRegen: "#21d8a2"
+    property color accentRegen: "#04FF00"
     property color textNeutral: "#ffffff"
 
     // Active Color (Switches based on mode)
-    property color currentAccent: accentNormal
+    property color currentAccent: accentRegen
 
     id: root
     width: 1920
