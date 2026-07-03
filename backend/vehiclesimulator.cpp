@@ -116,21 +116,38 @@ void VehicleSimulator::processMovement()
 
 void VehicleSimulator::processEnergy()
 {
-    double drain = 0.005 + (m_speed * 0.001);
-    m_soc -= drain;
-    m_soc = std::clamp(m_soc, 0.0, 100.0);
+    if (m_regenActive) {
+        m_powerUsage = -15.0f * m_brake;
+    } else {
+        m_powerUsage = 0.5f + (m_throttle * m_speed * 0.25f);
+    }
 
     if (m_throttle > 0.5) {
-        m_motorTemperature += 0.2; // Heat up under load
+        m_motorTemperature += 0.2f;
     } else {
-        m_motorTemperature -= 0.1; // Cool down naturally
+        m_motorTemperature -= 0.1f;
     }
     m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);
 
-    if (m_regenActive == true) {
-        m_soc += 0.002;
+    if (m_throttle > 0.5) {
+        m_energyEfficiency -= 0.02f;
+    } else if (m_regenActive) {
+        m_energyEfficiency += 0.01f;
+    } else {
+        if (m_energyEfficiency < 4.0f) m_energyEfficiency += 0.005f;
+        if (m_energyEfficiency > 4.0f) m_energyEfficiency -= 0.005f;
     }
-    m_estimatedRange = m_soc * 4.0;
+    m_energyEfficiency = std::clamp(m_energyEfficiency, 1.5f, 5.5f);
+
+    double finalDrain = m_powerUsage * 0.001;
+    if (m_motorTemperature > 75.0f) {
+        finalDrain *= 1.15;
+    }
+
+    m_soc -= finalDrain;
+    m_soc = std::clamp(m_soc, 0.0, 100.0);
+
+    m_estimatedRange = m_soc * m_energyEfficiency;
 }
 
 void VehicleSimulator::setGasPressed(bool pressed)

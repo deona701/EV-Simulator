@@ -82,6 +82,7 @@ private:
 
     double m_soc = 100.0f;
     float m_estimatedRange = 400.0f; // Starting range in km
+    float m_energyEfficiency = 4.0f; // KM per % of battery
     float m_powerUsage = 0.0f;
     bool m_regenActive = false;
 
