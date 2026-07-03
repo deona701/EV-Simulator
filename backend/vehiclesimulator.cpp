@@ -74,7 +74,7 @@ void VehicleSimulator::processMovement()
     float naturalFriction = 0.5;
     float max_brakingForce = 12.0;
     float max_acceleration = 4.2f;
-    float max_speed = 180.0;
+    double max_speed = 180.0;
 
     switch (m_driveMode) {
     case DriveMode::Eco:
