@@ -73,18 +73,23 @@ void VehicleSimulator::processMovement()
 
     float naturalFriction = 0.5;
     float max_brakingForce = 12.0;
+    float max_acceleration = 4.2f;
+    float max_speed = 180.0;
 
     switch (m_driveMode) {
     case DriveMode::Eco:
-        // code for Eco mode goes here
+        max_acceleration = 2.2;
+        max_speed = 140.0;
         break;
 
     case DriveMode::Normal:
-        // code for Normal mode goes here
+        max_acceleration = 4.2;
+        max_speed = 180.0;
         break;
 
     case DriveMode::Sport:
-        // code for Sport mode goes here
+        max_acceleration = 7.0;
+        max_speed = 250.0;
         break;
     }
 
@@ -106,7 +111,7 @@ void VehicleSimulator::processMovement()
 
 
     // Safety clamp so the car doesn't go backward from friction or exceed top speed
-    m_speed = std::clamp(m_speed, 0.0, 220.0);
+    m_speed = std::clamp(m_speed, 0.0, max_speed);
 }
 
 void VehicleSimulator::processEnergy()
