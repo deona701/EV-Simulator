@@ -9,11 +9,15 @@ Window {
     property color bgPrimary: "#0a0b0e"
     property color accentNormal: "#00ffff"
     property color accentSport: "#e43131"
-    property color accentRegen: "#04FF00"
+    property color accentEco: "#04FF00"
     property color textNeutral: "#ffffff"
 
     // Active Color (Switches based on mode)
-    property color currentAccent: accentRegen
+    property color currentAccent: {
+        if (vehicle.driveMode === VehicleSimulator.Eco) return accentEco;
+        if (vehicle.driveMode === VehicleSimulator.Sport) return accentSport;
+        return accentNormal;
+    }
 
     id: root
     width: 1920
@@ -227,10 +231,17 @@ Window {
     }
 }
 
-    // HIDDEN INTERACTION: Press spacebar to accelerate, let go to brake
+    // HIDDEN KEYBOARD INTERACTIONS
     Item {
         focus: true
-        Keys.onPressed: (event) => { if (event.key === Qt.Key_Space) vehicle.setGasPressed(true); }
+        // Press spacebar to accelerate, let go to brake. N for Normal mode, E for Eco mode, S for Sport mode.
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_Space) vehicle.setGasPressed(true);
+            if (event.key === Qt.Key_E) vehicle.driveMode = VehicleSimulator.Eco;
+            if (event.key === Qt.Key_N) vehicle.driveMode = VehicleSimulator.Normal;
+            if (event.key === Qt.Key_S) vehicle.driveMode = VehicleSimulator.Sport;
+        }
+
         Keys.onReleased: (event) => { if (event.key === Qt.Key_Space) vehicle.setGasPressed(false); }
     }
 }
