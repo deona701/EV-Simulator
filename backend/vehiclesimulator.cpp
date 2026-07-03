@@ -72,8 +72,21 @@ void VehicleSimulator::processMovement()
     m_brake = std::clamp(m_brake, 0.0f, 1.0f);
 
     float naturalFriction = 0.5;
-    float max_acceleration = 4.2;
     float max_brakingForce = 12.0;
+
+    switch (m_driveMode) {
+    case DriveMode::Eco:
+        // code for Eco mode goes here
+        break;
+
+    case DriveMode::Normal:
+        // code for Normal mode goes here
+        break;
+
+    case DriveMode::Sport:
+        // code for Sport mode goes here
+        break;
+    }
 
     if (m_soc <= 0) {
         m_soc = 0;
