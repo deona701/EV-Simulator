@@ -244,12 +244,15 @@ Window {
     // HIDDEN KEYBOARD INTERACTIONS
     Item {
         focus: true
-        // Press spacebar to accelerate, let go to brake. N for Normal mode, E for Eco mode, S for Sport mode.
+        /* Press spacebar to accelerate, let go to brake. N for Normal mode, E for Eco mode, S for Sport mode.
+        O to toggle One-Pedal Mode. */
         Keys.onPressed: (event) => {
             if (event.key === Qt.Key_Space) vehicle.setGasPressed(true);
             if (event.key === Qt.Key_E) vehicle.driveMode = VehicleSimulator.Eco;
             if (event.key === Qt.Key_N) vehicle.driveMode = VehicleSimulator.Normal;
             if (event.key === Qt.Key_S) vehicle.driveMode = VehicleSimulator.Sport;
+
+            if (event.key === Qt.Key_O) vehicle.onePedalMode = !vehicle.onePedalMode;
         }
 
         Keys.onReleased: (event) => { if (event.key === Qt.Key_Space) vehicle.setGasPressed(false); }
