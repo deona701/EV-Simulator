@@ -122,15 +122,20 @@ void VehicleSimulator::processMovement()
     m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
     m_speed += m_acceleration;
 
-    // Safety clamp so the car doesn't go backward from friction or exceed top speed
     m_speed = std::clamp(m_speed, 0.0, max_speed);
 }
 
 void VehicleSimulator::processEnergy()
 {
     if (m_regenActive) {
-        m_powerUsage = -15.0f * m_brake;
-    } else {
+        if (m_brake > 0.0f) {
+            m_powerUsage = -15.0f * m_brake;
+        }
+        else {
+            m_powerUsage = -5.0f;
+        }
+    }
+    else {
         m_powerUsage = 0.5f + (m_throttle * m_speed * 0.25f);
     }
 
