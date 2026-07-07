@@ -117,6 +117,16 @@ Window {
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 45
                 }
+
+                // Vehicle Regen
+                Rectangle {
+                    width: 14
+                    height: 6
+                    color: vehicle.regenActive ? accentEco : "#222326"
+                    anchors.bottom: parent.bottom
+                    anchors.right: parent.right
+                    anchors.margins: 30
+                }
             }
 
             // BATTERY CARD
