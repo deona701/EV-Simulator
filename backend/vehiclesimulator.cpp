@@ -109,6 +109,18 @@ void VehicleSimulator::processMovement()
     m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
     m_speed += m_acceleration;
 
+    if (m_speed > 0.0f) {
+        if (m_brake > 0.0f) {
+            m_regenActive = true;
+        }
+        else if (m_onePedalMode && m_throttle == 0.0f) {
+            m_regenActive = true;
+        }
+        else {
+            m_regenActive = false;
+        }
+    }
+
 
     // Safety clamp so the car doesn't go backward from friction or exceed top speed
     m_speed = std::clamp(m_speed, 0.0, max_speed);
@@ -124,16 +136,19 @@ void VehicleSimulator::processEnergy()
 
     if (m_throttle > 0.5) {
         m_motorTemperature += 0.2f;
-    } else {
+    }
+    else {
         m_motorTemperature -= 0.1f;
     }
     m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);
 
     if (m_throttle > 0.5) {
         m_energyEfficiency -= 0.02f;
-    } else if (m_regenActive) {
+    }
+    else if (m_regenActive) {
         m_energyEfficiency += 0.01f;
-    } else {
+    }
+    else {
         if (m_energyEfficiency < 4.0f) m_energyEfficiency += 0.005f;
         if (m_energyEfficiency > 4.0f) m_energyEfficiency -= 0.005f;
     }
