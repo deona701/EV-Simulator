@@ -55,6 +55,22 @@ void VehicleSimulator::updateSimulation()
 
 void VehicleSimulator::processMovement()
 {
+    if (m_speed > 0.0f) {
+        if (m_brake > 0.0f) {
+            m_regenActive = true;
+        }
+        else if (m_onePedalMode && m_throttle == 0.0f) {
+            m_regenActive = true;
+        }
+        else {
+            m_regenActive = false;
+        }
+    }
+    else {
+        m_regenActive = false;
+    }
+
+
     if (m_gasPressed) {
         m_throttle += 0.1;
     }
@@ -72,6 +88,10 @@ void VehicleSimulator::processMovement()
     m_brake = std::clamp(m_brake, 0.0f, 1.0f);
 
     float naturalFriction = 0.5;
+    if (m_onePedalMode && m_throttle == 0) {
+        naturalFriction += 3.5;
+    }
+
     float max_brakingForce = 12.0;
     float max_acceleration = 4.2f;
     double max_speed = 180.0;
@@ -98,29 +118,9 @@ void VehicleSimulator::processMovement()
         m_speed *= 0.95;
         m_throttle = 0.0f;
     }
-    if (m_throttle == 0.0f) {
-        naturalFriction += 0.2;
-        m_regenActive = true;
-    }
-    if (m_throttle > 0.0f) {
-        m_regenActive = false;
-    }
 
     m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
     m_speed += m_acceleration;
-
-    if (m_speed > 0.0f) {
-        if (m_brake > 0.0f) {
-            m_regenActive = true;
-        }
-        else if (m_onePedalMode && m_throttle == 0.0f) {
-            m_regenActive = true;
-        }
-        else {
-            m_regenActive = false;
-        }
-    }
-
 
     // Safety clamp so the car doesn't go backward from friction or exceed top speed
     m_speed = std::clamp(m_speed, 0.0, max_speed);
