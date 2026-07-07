@@ -30,6 +30,7 @@ public:
     Q_PROPERTY(float estimatedRange MEMBER m_estimatedRange NOTIFY estimatedRangeChanged)
     Q_PROPERTY(float powerUsage MEMBER m_powerUsage NOTIFY powerUsageChanged)
     Q_PROPERTY(bool regenActive MEMBER m_regenActive NOTIFY regenActiveChanged)
+    Q_PROPERTY(bool onePedalMode MEMBER m_onePedalMode  NOTIFY onePedalModeChanged)
 
     //Thermal Properties
     Q_PROPERTY(float batteryTemperature MEMBER m_batteryTemperature NOTIFY batteryTemperatureChanged)
@@ -67,6 +68,7 @@ signals:
     void coolingFanActiveChanged();
     void laneOffSetChanged();
     void distanceToVehicleAheadChanged();
+    void onePedalModeChanged();
 
 private:
     // Default starting values for the physical machine
@@ -89,9 +91,10 @@ private:
     float m_batteryTemperature = 25.0f; // Room temp to start
     float m_motorTemperature = 25.0f;
     bool m_coolingFanActive = false;
+    bool m_onePedalMode = false;
 
-    float m_laneOffSet = 0.0f; // Dead center in the lane
-    float m_distanceToVehicleAhead = 150.0f; // Safe distance ahead
+    float m_laneOffSet = 0.0f;
+    float m_distanceToVehicleAhead = 150.0f;
 
     QTimer *m_simTimer;
 };
