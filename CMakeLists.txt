@@ -29,6 +29,13 @@ qt_add_qml_module(appev_simulator
     SOURCES
         backend/vehiclesimulator.h
         backend/vehiclesimulator.cpp
+        QML_FILES ui/SpeedCard.qml
+        QML_FILES ui/BatteryCard.qml
+        QML_FILES ui/CenterScreen.qml
+        QML_FILES ui/VolumeSlider.qml
+        QML_FILES ui/Temperature.qml
+        QML_FILES ui/Seats.qml
+        QML_FILES ui/Settings.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

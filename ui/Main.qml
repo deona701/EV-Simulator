@@ -46,102 +46,13 @@ Window {
                 spacing: 25
                 topPadding: 20
 
-            // SPEED CARD
-            Rectangle {
-                width: parent.width * 0.85
-                height: parent.height * 0.52
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 30
-                color: bgPrimary
-                border.color: currentAccent
-                border.width: 2
+                // SPEED CARD
+                SpeedCard {}
 
-            // Speedometer Circle Shape
-            Rectangle {
-                width: 300
-                height: 300
-                radius: 150
-                anchors.centerIn: parent
-
-                color: "transparent"
-                border.color: currentAccent
-                border.width: 4
-
-                // Speedometer Ticks
-                Repeater {
-                    model: 12
-
-                    Rectangle {
-                    width: 2
-                    height: 150
-                    color: "transparent"
-                    anchors.bottom: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    transformOrigin: Item.Bottom
-                    rotation: -110 + (index * 20)
-
-                    Rectangle {
-                        width: 2
-                        height: 10
-                        color: currentAccent
-                        anchors.top: parent.top                        }
-                    }
-                }
-            }
-                // Speedometer Needle
-                Rectangle {
-                    width: 4
-                    height: 120
-                    color: currentAccent
-                    anchors.bottom: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    transformOrigin: Item.Bottom
-                    rotation: vehicle.speed - 110
-
-                    Behavior on rotation {
-                        NumberAnimation {
-                            duration: 250
-                            easing.type: Easing.OutQuad
-                        }
-                    }
-                }
-
-                // Speedometer Speed Value
-                Text {
-                    text: Math.round(vehicle.speed)
-                    color: currentAccent
-                    font.pixelSize: 34
-                    font.bold: true
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 45
-                }
-
-                // Vehicle Regen
-                Rectangle {
-                    width: 14
-                    height: 6
-                    color: vehicle.regenActive ? accentEco : "#222326"
-                    anchors.bottom: parent.bottom
-                    anchors.right: parent.right
-                    anchors.margins: 30
-                }
-            }
-
-            // BATTERY CARD
-            Rectangle {
-                width: parent.width * 0.85
-                height: parent.height * 0.38
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 30
-                color: bgPrimary
-                border.color: currentAccent
-                border.width: 2
-                }
+                // BATTERY CARD
+                BatteryCard {}
             }
         }
-
 
         // CENTER ZONE (Road & Environment) - 40%
         Rectangle {
@@ -149,32 +60,8 @@ Window {
             height: parent.height
             color: bgPrimary
 
-            Column {
+            CenterScreen {
                 anchors.fill: parent
-                spacing: 25
-                topPadding: 20
-
-            // MAIN SCREEN
-            Rectangle {
-                width: parent.width * 1
-                height: parent.height * 0.62
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 30
-                color: bgPrimary
-                border.color: currentAccent
-                border.width: 2
-            }
-
-            // BUTTONS
-            Rectangle {
-                width: parent.width * 0.95
-                height: parent.height * 0.28
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 30
-                color: bgPrimary
-                border.color: currentAccent
-                border.width: 2
-                }
             }
         }
 
@@ -189,57 +76,27 @@ Window {
                 spacing: 25
                 topPadding: 20
 
-            // VOLUME SLIDER
-            Rectangle {
-                width: parent.width * 0.85
-                height: parent.height * 0.32
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 30
-                color: bgPrimary
-                border.color: currentAccent
-                border.width: 2
-            }
+                // VOLUME SLIDER
+                VolumeSlider {}
 
-            Row {
-                width: parent.width * 0.85
-                height: parent.height * 0.25
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 25
+                Row {
+                    width: parent.width * 0.85
+                    height: parent.height * 0.25
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: 25
 
-                // TEMPERATURE
-                Rectangle {
-                    width: (parent.width - parent.spacing) / 2
-                    height: parent.height
-                    radius: 30
-                    color: bgPrimary
-                    border.color: currentAccent
-                    border.width: 2
+                    // TEMPERATURE
+                    Temperature {}
+
+                    // SEATS
+                    Seats {}
                 }
 
-                // SEATS
-                Rectangle {
-                    width: (parent.width - parent.spacing) / 2
-                    height: parent.height
-                    radius: 30
-                    color: bgPrimary
-                    border.color: currentAccent
-                    border.width: 2
-                }
-            }
-
-            // SETTINGS
-            Rectangle {
-                width: parent.width * 0.85
-                height: parent.height * 0.25
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 30
-                color: bgPrimary
-                border.color: currentAccent
-                border.width: 2
+                // SETTINGS
+                Settings {}
             }
         }
     }
-}
 
     // HIDDEN KEYBOARD INTERACTIONS
     Item {
