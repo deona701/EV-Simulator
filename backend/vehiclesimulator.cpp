@@ -39,11 +39,9 @@ void VehicleSimulator::setSoc(double newSoc)
 
 void VehicleSimulator::updateSimulation()
 {
-    // Run the sub-systems
     processMovement();
     processEnergy();
 
-    // Tell QML that properties updated
     emit speedChanged();
     emit socChanged();
     emit accelerationChanged();
@@ -51,8 +49,11 @@ void VehicleSimulator::updateSimulation()
     emit brakeChanged();
     emit estimatedRangeChanged();
     emit motorTemperatureChanged();
+    emit batteryTemperatureChanged();
     emit regenActiveChanged();
     emit coolingFanActiveChanged();
+    emit energyEfficiencyChanged();
+    emit powerUsageChanged();
 }
 
 void VehicleSimulator::processMovement()
@@ -129,9 +130,6 @@ void VehicleSimulator::processMovement()
 
 void VehicleSimulator::processEnergy()
 {
-    float m_coolingRate = 0.5f;
-    float m_coolingFactor = 0.5f;
-
     if (m_regenActive) {
         if (m_brake > 0.0f) {
             m_powerUsage = -15.0f * m_brake;
@@ -147,25 +145,21 @@ void VehicleSimulator::processEnergy()
     if (m_throttle > 0.5) {
         m_motorTemperature += 0.2f;
     }
-    //m_motorTemperature -= 0.1f;
 
     if (m_motorTemperature >= 75.0f && !m_coolingFanActive) {
         m_coolingFanActive = true;
     }
     else if (m_motorTemperature <= 50.0f && m_coolingFanActive) {
         m_coolingFanActive = false;
+        m_coolingRate = 0.5f;
+        m_coolingFactor = 0.5f;
     }
 
     if (m_coolingFanActive) {
-        if (m_speed >= 100) {
-            m_coolingRate *= (0.01 * m_speed);
-            m_motorTemperature -= m_coolingFactor;
-        }
-        if (m_speed < 100) {
-            m_motorTemperature -= m_coolingFactor;
-        }
+        float airflowBonus = 0.005f * m_speed;
+        float totalCooling = 0.2f + airflowBonus;
 
-        m_coolingFactor += m_coolingRate;
+        m_motorTemperature -= totalCooling;
     }
 
     m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);

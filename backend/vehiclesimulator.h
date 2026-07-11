@@ -21,7 +21,7 @@ public:
     //Movement Properties
     Q_PROPERTY(double speed READ speed WRITE setSpeed NOTIFY speedChanged)
     Q_PROPERTY(float acceleration MEMBER m_acceleration NOTIFY accelerationChanged)
-    Q_PROPERTY(double throttle MEMBER m_throttle NOTIFY throttleChanged)
+    Q_PROPERTY(float throttle MEMBER m_throttle NOTIFY throttleChanged)
     Q_PROPERTY(float brake MEMBER m_brake NOTIFY brakeChanged)
     Q_PROPERTY(DriveMode driveMode MEMBER m_driveMode NOTIFY driveModeChanged)
 
@@ -31,6 +31,7 @@ public:
     Q_PROPERTY(float powerUsage MEMBER m_powerUsage NOTIFY powerUsageChanged)
     Q_PROPERTY(bool regenActive MEMBER m_regenActive NOTIFY regenActiveChanged)
     Q_PROPERTY(bool onePedalMode MEMBER m_onePedalMode  NOTIFY onePedalModeChanged)
+    Q_PROPERTY(float energyEfficiency MEMBER m_energyEfficiency NOTIFY energyEfficiencyChanged)
 
     //Thermal Properties
     Q_PROPERTY(float batteryTemperature MEMBER m_batteryTemperature NOTIFY batteryTemperatureChanged)
@@ -69,6 +70,7 @@ signals:
     void laneOffSetChanged();
     void distanceToVehicleAheadChanged();
     void onePedalModeChanged();
+    void energyEfficiencyChanged();
 
 private:
     // Default starting values for the physical machine
@@ -92,6 +94,9 @@ private:
     float m_motorTemperature = 25.0f;
     bool m_coolingFanActive = false;
     bool m_onePedalMode = false;
+
+    float m_coolingRate = 0.5f;
+    float m_coolingFactor = 0.5f;
 
     float m_laneOffSet = 0.0f;
     float m_distanceToVehicleAhead = 150.0f;

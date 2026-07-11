@@ -6,17 +6,18 @@ import QtQuick.Shapes 1.15
 
 Rectangle {
     id: batteryBox
-    width: 400
-    height: 250
+    width: parent.width * 0.85
+    height: parent.height * 0.38
+    anchors.horizontalCenter: parent.horizontalCenter
     color: bgPrimary
     border.color: currentAccent
     border.width: 2
-    radius: 10
+    radius: 30
 
     Column {
         anchors.fill: parent
-        anchors.margins: 20
-        spacing: 15
+        anchors.margins: 15
+        spacing: 10
 
         //Battery
         Text {
