@@ -52,6 +52,7 @@ void VehicleSimulator::updateSimulation()
     emit estimatedRangeChanged();
     emit motorTemperatureChanged();
     emit regenActiveChanged();
+    emit coolingFanActiveChanged();
 }
 
 void VehicleSimulator::processMovement()
