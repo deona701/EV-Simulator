@@ -105,6 +105,7 @@ Window {
         O to toggle One-Pedal Mode. */
         Keys.onPressed: (event) => {
             if (event.key === Qt.Key_Space) vehicle.setGasPressed(true);
+            if (event.key === Qt.Key_B) vehicle.setBrakePressed(true);
             if (event.key === Qt.Key_E) vehicle.driveMode = VehicleSimulator.Eco;
             if (event.key === Qt.Key_N) vehicle.driveMode = VehicleSimulator.Normal;
             if (event.key === Qt.Key_S) vehicle.driveMode = VehicleSimulator.Sport;
@@ -112,6 +113,9 @@ Window {
             if (event.key === Qt.Key_O) vehicle.onePedalMode = !vehicle.onePedalMode;
         }
 
-        Keys.onReleased: (event) => { if (event.key === Qt.Key_Space) vehicle.setGasPressed(false); }
+        Keys.onReleased: (event) => {
+            if (event.key === Qt.Key_Space) vehicle.setGasPressed(false);
+            if (event.key === Qt.Key_B) vehicle.setBrakePressed(false);
+        }
     }
 }
