@@ -38,10 +38,6 @@ public:
     Q_PROPERTY(float motorTemperature MEMBER m_motorTemperature NOTIFY motorTemperatureChanged)
     Q_PROPERTY(bool coolingFanActive MEMBER m_coolingFanActive NOTIFY coolingFanActiveChanged)
 
-    //ADAS Properties
-    Q_PROPERTY(float laneOffSet MEMBER m_laneOffSet NOTIFY laneOffSetChanged)
-    Q_PROPERTY(float distanceToVehicleAhead MEMBER m_distanceToVehicleAhead NOTIFY distanceToVehicleAheadChanged)
-
     explicit VehicleSimulator(QObject *parent = nullptr);
 
     double speed() const;
@@ -67,8 +63,6 @@ signals:
     void batteryTemperatureChanged();
     void motorTemperatureChanged();
     void coolingFanActiveChanged();
-    void laneOffSetChanged();
-    void distanceToVehicleAheadChanged();
     void onePedalModeChanged();
     void energyEfficiencyChanged();
 
@@ -97,9 +91,6 @@ private:
 
     float m_coolingRate = 0.5f;
     float m_coolingFactor = 0.5f;
-
-    float m_laneOffSet = 0.0f;
-    float m_distanceToVehicleAhead = 150.0f;
 
     QTimer *m_simTimer;
 };
