@@ -89,9 +89,6 @@ private:
     bool m_coolingFanActive = false;
     bool m_onePedalMode = false;
 
-    float m_coolingRate = 0.5f;
-    float m_coolingFactor = 0.5f;
-
     QTimer *m_simTimer;
 };
 

@@ -151,8 +151,6 @@ void VehicleSimulator::processEnergy()
     }
     else if (m_motorTemperature <= 50.0f && m_coolingFanActive) {
         m_coolingFanActive = false;
-        m_coolingRate = 0.5f;
-        m_coolingFactor = 0.5f;
     }
 
     if (m_coolingFanActive) {
