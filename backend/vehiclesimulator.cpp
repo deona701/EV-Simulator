@@ -116,8 +116,7 @@ void VehicleSimulator::processMovement()
         break;
     }
 
-    if (m_soc <= 0) {
-        m_soc = 0;
+    if (m_soc <= 0.0f) {
         m_speed *= 0.95;
         m_throttle = 0.0f;
     }
