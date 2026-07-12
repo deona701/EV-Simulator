@@ -120,9 +120,10 @@ void VehicleSimulator::processMovement()
         m_speed *= 0.95;
         m_throttle = 0.0f;
     }
-
-    m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
-    m_speed += m_acceleration;
+    else {
+        m_acceleration = (max_acceleration * m_throttle) - (max_brakingForce * m_brake) - naturalFriction;
+        m_speed += m_acceleration;
+    }
 
     m_speed = std::clamp(m_speed, 0.0, max_speed);
 }
@@ -178,9 +179,10 @@ void VehicleSimulator::processEnergy()
         finalDrain *= 1.15;
     }
 
-    m_soc -= finalDrain;
-    m_soc = std::clamp(m_soc, 0.0, 100.0);
+    double nextSoc = m_soc - finalDrain;
+    nextSoc = std::clamp(nextSoc, 0.0, 100.0);
 
+    setSoc(nextSoc);
     m_estimatedRange = m_soc * m_energyEfficiency;
 }
 
