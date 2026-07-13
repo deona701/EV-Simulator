@@ -164,7 +164,7 @@ void VehicleSimulator::processEnergy()
     if (m_batteryTemperature > 28.8f) {
         batteryNeedsFan = true;
     }
-    if (m_batteryTemperature < 25.0f) {
+    else if (m_batteryTemperature < 25.0f) {
         batteryNeedsFan = false;
     }
     m_coolingFanActive = (motorNeedsFan || batteryNeedsFan);
