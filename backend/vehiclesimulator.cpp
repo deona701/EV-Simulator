@@ -171,10 +171,10 @@ void VehicleSimulator::processEnergy()
 
     if (m_coolingFanActive) {
         float airflowBonus = 0.005f * m_speed;
-        float totalCooling = 0.2f + airflowBonus;
+        float totalCooling = 0.2f;
 
-        m_motorTemperature -= totalCooling;
-        m_batteryTemperature -= totalCooling;
+        m_motorTemperature -= totalCooling + airflowBonus;
+        m_batteryTemperature -= totalCooling * 0.18f;
     }
 
     m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);
