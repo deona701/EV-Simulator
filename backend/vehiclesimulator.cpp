@@ -113,7 +113,7 @@ void VehicleSimulator::processMovement()
 
     case DriveMode::Sport:
         max_acceleration = 7.0;
-        max_speed = 250.0;
+        max_speed = 260.0;
         break;
     }
 

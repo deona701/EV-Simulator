@@ -26,7 +26,7 @@ Rectangle {
 
         // Speedometer Ticks
         Repeater {
-            model: 12
+            model: 14
 
             Rectangle {
                 width: 2
@@ -35,7 +35,7 @@ Rectangle {
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 transformOrigin: Item.Bottom
-                rotation: -110 + (index * 20)
+                rotation: -130 + (index * 20)
 
                 Rectangle {
                     width: 2
@@ -54,7 +54,7 @@ Rectangle {
         anchors.bottom: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         transformOrigin: Item.Bottom
-        rotation: vehicle.speed - 110
+        rotation: vehicle.speed - 130
 
         Behavior on rotation {
             NumberAnimation {
