@@ -1,5 +1,6 @@
 #include "vehiclesimulator.h"
 #include <algorithm>
+#include <cmath>
 
 VehicleSimulator::VehicleSimulator(QObject *parent)
     : QObject(parent)
@@ -146,21 +147,38 @@ void VehicleSimulator::processEnergy()
         m_motorTemperature += 0.2f;
     }
 
-    if (m_motorTemperature >= 75.0f && !m_coolingFanActive) {
-        m_coolingFanActive = true;
+
+    bool motorNeedsFan = m_coolingFanActive;
+    bool batteryNeedsFan = m_coolingFanActive;
+
+    if (m_motorTemperature >= 75.0f) {
+        motorNeedsFan = true;
     }
-    else if (m_motorTemperature <= 50.0f && m_coolingFanActive) {
-        m_coolingFanActive = false;
+    else if (m_motorTemperature <= 50.0f) {
+        motorNeedsFan = false;
     }
+
+    float batteryHeatGeneration = std::abs(m_powerUsage) * 0.005f;
+    m_batteryTemperature += batteryHeatGeneration;
+
+    if (m_batteryTemperature > 28.8f) {
+        batteryNeedsFan = true;
+    }
+    if (m_batteryTemperature < 25.0f) {
+        batteryNeedsFan = false;
+    }
+    m_coolingFanActive = (motorNeedsFan || batteryNeedsFan);
 
     if (m_coolingFanActive) {
         float airflowBonus = 0.005f * m_speed;
         float totalCooling = 0.2f + airflowBonus;
 
         m_motorTemperature -= totalCooling;
+        m_batteryTemperature -= totalCooling;
     }
 
     m_motorTemperature = std::clamp(m_motorTemperature, 25.0f, 100.0f);
+    m_batteryTemperature = std::clamp(m_batteryTemperature, 25.0f, 55.0f);
 
     if (m_throttle > 0.5) {
         m_energyEfficiency -= 0.02f;
