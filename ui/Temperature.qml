@@ -7,7 +7,7 @@ import QtQuick.Shapes 1.15
 Rectangle {
     width: (parent.width - parent.spacing) / 2
     height: parent.height
-    radius: 30
+    radius: 10
     color: bgPrimary
     border.color: currentAccent
     border.width: 2

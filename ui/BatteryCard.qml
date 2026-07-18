@@ -12,7 +12,7 @@ Rectangle {
     color: bgPrimary
     border.color: currentAccent
     border.width: 2
-    radius: 30
+    radius: 10
 
     Column {
         anchors.fill: parent

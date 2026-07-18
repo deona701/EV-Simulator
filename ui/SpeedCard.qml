@@ -8,7 +8,7 @@ Rectangle {
     width: parent.width * 0.85
     height: parent.height * 0.52
     anchors.horizontalCenter: parent.horizontalCenter
-    radius: 30
+    radius: 10
     color: bgPrimary
     border.color: currentAccent
     border.width: 2
