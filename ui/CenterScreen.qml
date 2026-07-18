@@ -16,7 +16,7 @@ Rectangle {
 
     // MAIN SCREEN
     Rectangle {
-        width: parent.width * 1
+        width: parent.width
         height: parent.height * 0.62
         anchors.horizontalCenter: parent.horizontalCenter
         radius: 10
@@ -27,13 +27,30 @@ Rectangle {
 
     // BUTTONS
     Rectangle {
-        width: parent.width * 1
+        width: parent.width
         height: parent.height * 0.28
         anchors.horizontalCenter: parent.horizontalCenter
         radius: 10
         color: bgPrimary
         border.color: currentAccent
         border.width: 2
+
+            Row {
+                // NAVIGATION
+                Rectangle {
+
+                }
+
+                // CAR
+                Rectangle {
+
+                }
+
+                // MEDIA
+                Rectangle {
+
+                }
+            }
         }
     }
 }
