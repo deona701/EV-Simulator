@@ -29,17 +29,44 @@ Rectangle {
 
         // NAVIGATION
         Item {
+            anchors.fill: parent
+            visible: root.activeView === "MAP"
 
+            Text {
+                text: "NAV"
+                color: currentAccent
+                font.pixelSize: 18
+                font.bold: true
+                anchors.centerIn: parent
+            }
         }
 
         // CAR
         Item {
+            anchors.fill: parent
+            visible: root.activeView === "CAR"
 
+            Text {
+                text: "CAR"
+                color: currentAccent
+                font.pixelSize: 18
+                font.bold: true
+                anchors.centerIn: parent
+            }
         }
 
         // MEDIA
         Item {
+            anchors.fill: parent
+            visible: root.activeView === "MEDIA"
 
+            Text {
+                text: "MEDIA"
+                color: currentAccent
+                font.pixelSize: 18
+                font.bold: true
+                anchors.centerIn: parent
+            }
         }
     }
 
