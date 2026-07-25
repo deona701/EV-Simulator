@@ -26,6 +26,21 @@ Rectangle {
         color: bgPrimary
         border.color: currentAccent
         border.width: 2
+
+        // NAVIGATION
+        Item {
+
+        }
+
+        // CAR
+        Item {
+
+        }
+
+        // MEDIA
+        Item {
+
+        }
     }
 
     // BUTTONS
