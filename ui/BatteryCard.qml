@@ -7,7 +7,7 @@ import QtQuick.Shapes 1.15
 Rectangle {
     id: batteryBox
     width: parent.width * 0.85
-    height: parent.height * 0.38
+    height: parent.height * 0.34
     anchors.horizontalCenter: parent.horizontalCenter
     color: bgPrimary
     border.color: currentAccent
