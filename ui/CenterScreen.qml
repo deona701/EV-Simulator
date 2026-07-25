@@ -5,6 +5,9 @@ import ev_simulator
 import QtQuick.Shapes 1.15
 
 Rectangle {
+    id: root
+    property string activeView: "MAP"
+
     width: parent.width - 50
     height: parent.height
     color: bgPrimary
@@ -44,6 +47,19 @@ Rectangle {
                     width: (parent.width - 4) / 3
                     height: parent.height
                     color: "transparent"
+
+                    Text {
+                        text: "NAV"
+                        color: currentAccent
+                        font.pixelSize: 18
+                        font.bold: true
+                        anchors.centerIn: parent
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: root.activeView = "MAP"
+                    }
                 }
 
                 // DIVIDER
@@ -58,6 +74,19 @@ Rectangle {
                     width: (parent.width - 4) / 3
                     height: parent.height
                     color: "transparent"
+
+                    Text {
+                        text: "CAR"
+                        color: currentAccent
+                        font.pixelSize: 18
+                        font.bold: true
+                        anchors.centerIn: parent
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: root.activeView = "CAR"
+                    }
                 }
 
                 // DIVIDER
@@ -72,6 +101,19 @@ Rectangle {
                     width: (parent.width - 4) / 3
                     height: parent.height
                     color: "transparent"
+
+                    Text {
+                        text: "MEDIA"
+                        color: currentAccent
+                        font.pixelSize: 18
+                        font.bold: true
+                        anchors.centerIn: parent
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: root.activeView = "MEDIA"
+                    }
                 }
             }
         }
