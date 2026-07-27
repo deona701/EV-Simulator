@@ -34,12 +34,28 @@ Rectangle {
             anchors.fill: parent
             visible: root.activeView === "MAP"
 
-            Text {
-                text: "NAV"
-                color: currentAccent
-                font.pixelSize: 18
-                font.bold: true
-                anchors.centerIn: parent
+            Plugin {
+                id: mapPlugin
+                name: "osm"
+
+                PluginParameter {
+                    name: "osm.mapping.custom.host"
+                    value: "https://a.basemaps.cartocdn.com/dark_all/%z/%x/%y@2x.png"
+                }
+
+                PluginParameter {
+                    name: "osm.useragent"
+                    value: "EV_Simulator"
+                }
+            }
+
+            Map {
+                id: navMap
+                anchors.fill: parent
+                plugin: mapPlugin
+                activeMapType: navMap.supportedMapTypes[navMap.supportedMapTypes.length - 1]
+                zoomLevel: 14
+                center: QtPositioning.coordinate(40.7128, -74.0060)
             }
         }
 
