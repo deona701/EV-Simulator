@@ -3,6 +3,8 @@ import QtQuick.Window
 import QtQuick.Layouts
 import ev_simulator
 import QtQuick.Shapes 1.15
+import QtLocation
+import QtPositioning
 
 Rectangle {
     id: root

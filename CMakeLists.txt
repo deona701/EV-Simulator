@@ -7,6 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_PREFIX_PATH "/home/d701/Qt/6.11.1/gcc_64")
 find_package(Qt6 REQUIRED COMPONENTS Quick)
 
+find_package(Qt6 REQUIRED COMPONENTS
+    Quick
+    Positioning
+    Location
+    Multimedia
+)
+
 qt_standard_project_setup(REQUIRES 6.10)
 
 # Content of downloaded design from Figma to Qt or similar
@@ -27,16 +34,16 @@ qt_add_qml_module(appev_simulator
     VERSION 1.0
     QML_FILES
         ui/Main.qml
+        ui/SpeedCard.qml
+        ui/BatteryCard.qml
+        ui/CenterScreen.qml
+        ui/VolumeSlider.qml
+        ui/Temperature.qml
+        ui/Seats.qml
+        ui/Settings.qml
     SOURCES
         backend/vehiclesimulator.h
         backend/vehiclesimulator.cpp
-        QML_FILES ui/SpeedCard.qml
-        QML_FILES ui/BatteryCard.qml
-        QML_FILES ui/CenterScreen.qml
-        QML_FILES ui/VolumeSlider.qml
-        QML_FILES ui/Temperature.qml
-        QML_FILES ui/Seats.qml
-        QML_FILES ui/Settings.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -54,6 +61,9 @@ target_include_directories(appev_simulator PRIVATE backend)
 
 target_link_libraries(appev_simulator
     PRIVATE Qt6::Quick
+    Qt6::Positioning
+    Qt6::Location
+    Qt6::Multimedia
 )
 
 install(TARGETS appev_simulator
