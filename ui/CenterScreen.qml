@@ -5,6 +5,7 @@ import ev_simulator
 import QtQuick.Shapes 1.15
 import QtLocation
 import QtPositioning
+import QtQuick.Effects
 
 Rectangle {
     id: root
@@ -30,9 +31,13 @@ Rectangle {
         border.width: 2
 
         // NAVIGATION
-        Item {
+        Rectangle {
             anchors.fill: parent
             visible: root.activeView === "MAP"
+            color: bgPrimary
+            radius: 10
+            border.color: currentAccent
+            border.width: 2
 
             Plugin {
                 id: mapPlugin
@@ -40,22 +45,44 @@ Rectangle {
 
                 PluginParameter {
                     name: "osm.mapping.custom.host"
-                    value: "https://a.basemaps.cartocdn.com/dark_all/%z/%x/%y@2x.png"
+                    value: "https://a.basemaps.cartocdn.com/dark_all/"
                 }
 
                 PluginParameter {
                     name: "osm.useragent"
                     value: "EV_Simulator"
                 }
+
+                PluginParameter {
+                    name: "osm.mapping.providersrepository.disabled"
+                    value: true
+                }
+            }
+
+            Rectangle {
+                id: mapMask
+                anchors.fill: parent
+                anchors.margins: 2
+                radius: 8
+                color: black
+                visible: false
+                layer.enabled: true
             }
 
             Map {
                 id: navMap
                 anchors.fill: parent
+                anchors.margins: 2
                 plugin: mapPlugin
                 activeMapType: navMap.supportedMapTypes[navMap.supportedMapTypes.length - 1]
                 zoomLevel: 14
                 center: QtPositioning.coordinate(40.7128, -74.0060)
+
+                layer.enabled: true
+                layer.effect: MultiEffect {
+                    maskEnabled: true
+                    maskSource: mapMask
+                }
             }
         }
 
