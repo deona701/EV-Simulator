@@ -45,7 +45,7 @@ Rectangle {
 
                 PluginParameter {
                     name: "osm.mapping.custom.host"
-                    value: "https://a.basemaps.cartocdn.com/dark_all/"
+                    value: "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
                 }
 
                 PluginParameter {
@@ -64,7 +64,7 @@ Rectangle {
                 anchors.fill: parent
                 anchors.margins: 2
                 radius: 8
-                color: black
+                color: "black"
                 visible: false
                 layer.enabled: true
             }
@@ -74,7 +74,6 @@ Rectangle {
                 anchors.fill: parent
                 anchors.margins: 2
                 plugin: mapPlugin
-                activeMapType: navMap.supportedMapTypes[navMap.supportedMapTypes.length - 1]
                 zoomLevel: 14
                 center: QtPositioning.coordinate(40.7128, -74.0060)
 
@@ -82,6 +81,25 @@ Rectangle {
                 layer.effect: MultiEffect {
                     maskEnabled: true
                     maskSource: mapMask
+                }
+
+                DragHandler {
+                    id: drag
+                    target: null
+                    onTranslationChanged: (delta) => navMap.pan(-delta.x, -delta.y)
+                }
+
+                WheelHandler {
+                    acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+
+                    onWheel: function(event) {
+                        if (event.angleDelta.y > 0) {
+                            navMap.zoomLevel += 0.5
+                        }
+                        else {
+                            navMap.zoomLevel -= 0.5
+                        }
+                    }
                 }
             }
         }
