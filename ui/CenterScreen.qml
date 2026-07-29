@@ -44,8 +44,13 @@ Rectangle {
                 name: "osm"
 
                 PluginParameter {
+                    name: "osm.mapping.cache.disk.size"
+                    value: 0
+                }
+
+                PluginParameter {
                     name: "osm.mapping.custom.host"
-                    value: "https://a.basemaps.cartocdn.com/dark_all/"
+                    value: "https://a.basemaps.cartocdn.com/dark_all/%z/%x/%y@2x.png"
                 }
 
                 PluginParameter {
