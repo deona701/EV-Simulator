@@ -45,7 +45,7 @@ Rectangle {
 
                 PluginParameter {
                     name: "osm.mapping.custom.host"
-                    value: "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+                    value: "https://a.basemaps.cartocdn.com/dark_all/"
                 }
 
                 PluginParameter {
@@ -76,6 +76,8 @@ Rectangle {
                 plugin: mapPlugin
                 zoomLevel: 14
                 center: QtPositioning.coordinate(40.7128, -74.0060)
+
+                activeMapType: supportedMapTypes.length > 0 ? supportedMapTypes[supportedMapTypes.length - 1] : null
 
                 layer.enabled: true
                 layer.effect: MultiEffect {
