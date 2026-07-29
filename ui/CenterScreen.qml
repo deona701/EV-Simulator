@@ -76,6 +76,7 @@ Rectangle {
 
             Map {
                 id: navMap
+                color: bgPrimary
                 anchors.fill: parent
                 anchors.margins: 2
                 plugin: mapPlugin
