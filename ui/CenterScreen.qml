@@ -6,6 +6,7 @@ import QtQuick.Shapes 1.15
 import QtLocation
 import QtPositioning
 import QtQuick.Effects
+import QtMultimedia
 
 Rectangle {
     id: root
@@ -128,15 +129,46 @@ Rectangle {
 
         // MEDIA
         Item {
+            id: mediaView
             anchors.fill: parent
             visible: root.activeView === "MEDIA"
 
-            Text {
-                text: "MEDIA"
-                color: currentAccent
-                font.pixelSize: 18
-                font.bold: true
-                anchors.centerIn: parent
+            property var playlist: [
+                "file:///home/d701/EV_Simulator/assets-music/Resurgo-Aim-To-Head-Official.mp3",
+                "file:///home/d701/EV_Simulator/assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3",
+                "file:///home/d701/EV_Simulator/assets-music/DOMBOI-BEATS-PROVIDER.mp3",
+                "file:///home/d701/EV_Simulator/assets-music/BOUNCE-BACK-MOSHEIX.mp3"
+            ]
+
+            property int currentTrack: 0
+
+            MediaPlayer {
+                id: mediaPlayer
+                audioOutput: AudioOutput { volume: 0.8 }
+
+                source: mediaView.playlist[mediaView.currentTrack]
+            }
+
+            Rectangle {
+                anchors.fill: parent
+                radius: 10
+
+                Text {
+                    anchors.centerIn: parent
+                    text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "PAUSE" : "PLAY"
+                    color: "black"
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
+                            mediaPlayer.pause()
+                        } else {
+                            mediaPlayer.play()
+                        }
+                    }
+                }
             }
         }
     }
