@@ -44,6 +44,11 @@ qt_add_qml_module(appev_simulator
     SOURCES
         backend/vehiclesimulator.h
         backend/vehiclesimulator.cpp
+        RESOURCES
+            assets-music/Resurgo-Aim-To-Head-Official.mp3
+            assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3
+            assets-music/DOMBOI-BEATS-PROVIDER.mp3
+            assets-music/BOUNCE-BACK-MOSHEIX.mp3
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

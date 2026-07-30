@@ -134,10 +134,10 @@ Rectangle {
             visible: root.activeView === "MEDIA"
 
             property var playlist: [
-                "file:///home/d701/EV_Simulator/assets-music/Resurgo-Aim-To-Head-Official.mp3",
-                "file:///home/d701/EV_Simulator/assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3",
-                "file:///home/d701/EV_Simulator/assets-music/DOMBOI-BEATS-PROVIDER.mp3",
-                "file:///home/d701/EV_Simulator/assets-music/BOUNCE-BACK-MOSHEIX.mp3"
+                Qt.resolvedUrl("../assets-music/Resurgo-Aim-To-Head-Official.mp3"),
+                Qt.resolvedUrl("../assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3"),
+                Qt.resolvedUrl("../assets-music/DOMBOI-BEATS-PROVIDER.mp3"),
+                Qt.resolvedUrl("../assets-music/BOUNCE-BACK-MOSHEIX.mp3")
             ]
 
             property int currentTrack: 0
