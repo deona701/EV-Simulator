@@ -133,6 +133,7 @@ Rectangle {
             anchors.fill: parent
             visible: root.activeView === "MEDIA"
 
+            property int currentTrack: 0
             property var playlist: [
                 Qt.resolvedUrl("../assets-music/Resurgo-Aim-To-Head-Official.mp3"),
                 Qt.resolvedUrl("../assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3"),
@@ -140,7 +141,18 @@ Rectangle {
                 Qt.resolvedUrl("../assets-music/BOUNCE-BACK-MOSHEIX.mp3")
             ]
 
-            property int currentTrack: 0
+            function togglePlayPause() {
+                if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
+                    mediaPlayer.pause()
+                } else {
+                    mediaPlayer.play()
+                }
+            }
+
+            function nextTrack() {
+                currentTrack = (currentTrack + 1 + playlist.length) % playlist.length
+                mediaPlayer.play()
+            }
 
             MediaPlayer {
                 id: mediaPlayer
@@ -152,21 +164,19 @@ Rectangle {
             Rectangle {
                 anchors.fill: parent
                 radius: 10
+                color: "transparent"
 
                 Text {
                     anchors.centerIn: parent
+                    font.pixelSize: 32
+                    color: currentAccent
                     text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "PAUSE" : "PLAY"
-                    color: "black"
                 }
 
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
-                            mediaPlayer.pause()
-                        } else {
-                            mediaPlayer.play()
-                        }
+                        mediaView.togglePlayPause()
                     }
                 }
             }
