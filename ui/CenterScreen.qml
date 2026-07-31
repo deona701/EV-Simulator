@@ -166,17 +166,72 @@ Rectangle {
                 radius: 10
                 color: "transparent"
 
-                Text {
+                Column {
                     anchors.centerIn: parent
-                    font.pixelSize: 32
-                    color: currentAccent
-                    text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "PAUSE" : "PLAY"
-                }
+                    spacing: 20
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        mediaView.togglePlayPause()
+                    Text {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 32
+                        color: currentAccent
+                        text: "MediaPlayer"
+                    }
+
+                    Row {
+                        spacing: 20
+                        anchors.horizontalCenter: parent.horizontalCenter
+
+                        Text {
+                            font.pixelSize: 32
+                            color: currentAccent
+                            text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "PAUSE" : "PLAY";
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    mediaView.togglePlayPause()
+                                }
+                            }
+                        }
+
+                        Text {
+                            font.pixelSize: 32
+                            color: currentAccent
+                            text: "PREV"
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    //mediaView.togglePlayPause()
+                                }
+                            }
+                        }
+
+                        Text {
+                            font.pixelSize: 32
+                            color: currentAccent
+                            text: "NEXT"
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    mediaView.nextTrack()
+                                }
+                            }
+                        }
+
+                        Text {
+                            font.pixelSize: 32
+                            color: currentAccent
+                            text: "LOOP"
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    //mediaView.togglePlayPause()
+                                }
+                            }
+                        }
                     }
                 }
             }
