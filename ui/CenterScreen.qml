@@ -154,6 +154,16 @@ Rectangle {
                 mediaPlayer.play()
             }
 
+            function prevTrack() {
+                currentTrack = (currentTrack - 1 + playlist.length) % playlist.length
+                mediaPlayer.play()
+            }
+
+            function loopTrack() {
+                mediaPlayer.loops = (mediaPlayer.loops === MediaPlayer.Infinite) ? 1 : MediaPlayer.Infinite
+            }
+
+
             MediaPlayer {
                 id: mediaPlayer
                 audioOutput: AudioOutput { volume: 0.8 }
@@ -202,7 +212,7 @@ Rectangle {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    //mediaView.togglePlayPause()
+                                    mediaView.prevTrack()
                                 }
                             }
                         }
@@ -228,7 +238,7 @@ Rectangle {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    //mediaView.togglePlayPause()
+                                    mediaView.loopTrack()
                                 }
                             }
                         }
