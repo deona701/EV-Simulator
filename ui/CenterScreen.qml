@@ -214,6 +214,14 @@ Rectangle {
                                     anchors.centerIn: parent
                                     spacing: 20
 
+                                    Text {
+                                        anchors.horizontalCenter: parent.horizontalCenter
+                                        font.pixelSize: 22
+                                        color: currentAccent
+                                        text: mediaView.playlist[mediaView.currentTrack].title
+                                        elide: Text.ElideRight
+                                    }
+
                                     Row {
                                         spacing: 20
                                         anchors.horizontalCenter: parent.horizontalCenter
@@ -259,7 +267,7 @@ Rectangle {
 
                                         Text {
                                             font.pixelSize: 24
-                                            color: currentAccent
+                                            color: mediaPlayer.loops === mediaPlayer.Infinite ? "#555555" : currentAccent
                                             text: "LOOP"
 
                                             MouseArea {
