@@ -177,71 +177,110 @@ Rectangle {
                 color: "transparent"
 
                 Column {
-                    anchors.centerIn: parent
-                    spacing: 20
+                    anchors.fill: parent
+                    anchors.margins: 10
+                    spacing: 15
 
-                    Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        font.pixelSize: 32
-                        color: currentAccent
-                        text: "MediaPlayer"
+                    // Top Section
+                    Rectangle {
+                        id: topSection
+                        width: parent.width
+                        height: parent.height * 0.40
+                        border.color: currentAccent
+                        color: "transparent"
+
+                        Row {
+                            anchors.fill: parent
+
+                            // Song Cover
+                            Rectangle {
+                                height: parent.height
+                                width: parent.width * 0.40
+                                border.color: currentAccent
+                                color: currentAccent
+                            }
+
+                            // Name, Time, Play, Next, Loop
+                            Rectangle {
+                                height: parent.height
+                                width: parent.width * 0.60
+                                border.color: currentAccent
+                                color: "transparent"
+
+                                Column {
+                                    anchors.centerIn: parent
+                                    spacing: 20
+
+                                    Row {
+                                        spacing: 20
+                                        anchors.horizontalCenter: parent.horizontalCenter
+
+                                        Text {
+                                            font.pixelSize: 24
+                                            color: currentAccent
+                                            text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "PAUSE" : "PLAY";
+
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    mediaView.togglePlayPause()
+                                                }
+                                            }
+                                        }
+
+                                        Text {
+                                            font.pixelSize: 24
+                                            color: currentAccent
+                                            text: "PREV"
+
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    mediaView.prevTrack()
+                                                }
+                                            }
+                                        }
+
+                                        Text {
+                                            font.pixelSize: 24
+                                            color: currentAccent
+                                            text: "NEXT"
+
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    mediaView.nextTrack()
+                                                }
+                                            }
+                                        }
+
+                                        Text {
+                                            font.pixelSize: 24
+                                            color: currentAccent
+                                            text: "LOOP"
+
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    mediaView.loopTrack()
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
-                    Row {
-                        spacing: 20
-                        anchors.horizontalCenter: parent.horizontalCenter
+                    // Bottom Section
+                    Rectangle {
+                        id: bottomSection
+                        width: parent.width
+                        height: parent.height * 0.55
+                        border.color: currentAccent
+                        color: "transparent"
 
-                        Text {
-                            font.pixelSize: 32
-                            color: currentAccent
-                            text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "PAUSE" : "PLAY";
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    mediaView.togglePlayPause()
-                                }
-                            }
-                        }
-
-                        Text {
-                            font.pixelSize: 32
-                            color: currentAccent
-                            text: "PREV"
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    mediaView.prevTrack()
-                                }
-                            }
-                        }
-
-                        Text {
-                            font.pixelSize: 32
-                            color: currentAccent
-                            text: "NEXT"
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    mediaView.nextTrack()
-                                }
-                            }
-                        }
-
-                        Text {
-                            font.pixelSize: 32
-                            color: currentAccent
-                            text: "LOOP"
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    mediaView.loopTrack()
-                                }
-                            }
-                        }
+                        // Make the other songs appear here, with their names and a play button.
                     }
                 }
             }
