@@ -165,7 +165,7 @@ Rectangle {
                 mediaPlayer.loops = (mediaPlayer.loops === MediaPlayer.Infinite) ? 1 : MediaPlayer.Infinite
             }
 
-            function formatTIme(ms) {
+            function formatTime(ms) {
                 let seconds = Math.floor(ms / 1000)
                 let minutes = Math.floor(seconds / 60)
                 seconds = seconds % 60
@@ -226,6 +226,56 @@ Rectangle {
                                         color: currentAccent
                                         text: mediaView.playlist[mediaView.currentTrack].title
                                         elide: Text.ElideRight
+                                    }
+
+                                    // Progress Bar Track
+                                    Row {
+                                        spacing: 15
+                                        anchors.horizontalCenter: parent.horizontalCenter
+
+                                        // Current Time (Left)
+                                        Text {
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            font.pixelSize: 14
+                                            color: currentAccent
+                                            text: mediaView.formatTime(mediaPlayer.position)
+                                        }
+
+                                        // Progress Bar
+
+                                        Rectangle {
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            width: 220
+                                            height: 8
+                                            color: bgPrimary
+                                            border.color: currentAccent
+                                            radius: 4
+
+                                            Rectangle {
+                                                height: parent.height
+                                                width: mediaPlayer.duration > 0 ? parent.width * (mediaPlayer.position / mediaPlayer.duration) : 0
+                                                color: currentAccent
+                                                radius: 4
+                                            }
+
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: (mouse) => {
+                                                    if (mediaPlayer.duration > 0) {
+                                                        let clickRatio = mouse.x / width
+                                                        mediaPlayer.position = mediaPlayer.duration * clickRatio
+                                                   }
+                                                }
+                                            }
+                                        }
+
+                                        // Total Duration (Right)
+                                        Text {
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            font.pixelSize: 14
+                                            color: currentAccent
+                                            text: mediaView.formatTime(mediaPlayer.duration)
+                                        }
                                     }
 
                                     Row {
