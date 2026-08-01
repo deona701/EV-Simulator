@@ -194,8 +194,9 @@ Rectangle {
 
                             // Song Cover
                             Rectangle {
+                                id: songCover
                                 height: parent.height
-                                width: parent.width * 0.40
+                                width: parent.height
                                 border.color: currentAccent
                                 color: currentAccent
                             }
@@ -203,7 +204,7 @@ Rectangle {
                             // Name, Time, Play, Next, Loop
                             Rectangle {
                                 height: parent.height
-                                width: parent.width * 0.60
+                                width: parent.width - songCover.width
                                 border.color: currentAccent
                                 color: "transparent"
 
