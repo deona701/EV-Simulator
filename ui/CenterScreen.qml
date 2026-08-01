@@ -135,10 +135,12 @@ Rectangle {
 
             property int currentTrack: 0
             property var playlist: [
-                Qt.resolvedUrl("../assets-music/Resurgo-Aim-To-Head-Official.mp3"),
-                Qt.resolvedUrl("../assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3"),
-                Qt.resolvedUrl("../assets-music/DOMBOI-BEATS-PROVIDER.mp3"),
-                Qt.resolvedUrl("../assets-music/BOUNCE-BACK-MOSHEIX.mp3")
+                { title: "Industrial", url: Qt.resolvedUrl("../assets-music/audioknap-industrial-516087.mp3") },
+                { title: "Synthwave", url: Qt.resolvedUrl("../assets-music/mondamusic-synthwave-572999.mp3") },
+                { title: "Cyberpunk", url: Qt.resolvedUrl("../assets-music/monume-cyberpunk-519219.mp3") },
+                { title: "Interstellar Dance", url: Qt.resolvedUrl("../assets-music/psychronic-interstellar-dance-520116.mp3") },
+                { title: "Dark Synthwave (Black Neon)", url: Qt.resolvedUrl("../assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3") },
+                { title: "Dark Synthwave (Spectral)", url: Qt.resolvedUrl("../assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3") }
             ]
 
             function togglePlayPause() {
@@ -168,7 +170,7 @@ Rectangle {
                 id: mediaPlayer
                 audioOutput: AudioOutput { volume: 0.8 }
 
-                source: mediaView.playlist[mediaView.currentTrack]
+                source: mediaView.playlist[mediaView.currentTrack].url
             }
 
             Rectangle {

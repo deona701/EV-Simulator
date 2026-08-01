@@ -45,10 +45,12 @@ qt_add_qml_module(appev_simulator
         backend/vehiclesimulator.h
         backend/vehiclesimulator.cpp
         RESOURCES
-            assets-music/Resurgo-Aim-To-Head-Official.mp3
-            assets-music/Sport-Cyberpunk-Racing-by-Infraction.mp3
-            assets-music/DOMBOI-BEATS-PROVIDER.mp3
-            assets-music/BOUNCE-BACK-MOSHEIX.mp3
+            assets-music/audioknap-industrial-516087.mp3
+            assets-music/mondamusic-synthwave-572999.mp3
+            assets-music/monume-cyberpunk-519219.mp3
+            assets-music/psychronic-interstellar-dance-520116.mp3
+            assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3
+            assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
