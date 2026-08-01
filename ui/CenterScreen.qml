@@ -267,7 +267,7 @@ Rectangle {
 
                                         Text {
                                             font.pixelSize: 24
-                                            color: mediaPlayer.loops === mediaPlayer.Infinite ? "#555555" : currentAccent
+                                            color: mediaPlayer.loops === MediaPlayer.Infinite ? "#555555" : currentAccent
                                             text: "LOOP"
 
                                             MouseArea {
