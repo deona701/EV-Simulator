@@ -283,7 +283,44 @@ Rectangle {
                         border.color: currentAccent
                         color: "transparent"
 
-                        // Make the other songs appear here, with their names and a play button.
+                        ListView {
+                            anchors.fill: parent
+                            clip: true
+                            model: mediaView.playlist
+
+                            delegate: Rectangle {
+                                width: ListView.view.width
+                                height: 40
+                                color: "transparent"
+                                border.color: index === mediaView.currentTrack ? currentAccent : "transparent"
+
+                                Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: 10
+                                    font.pixelSize: 24
+                                    color: currentAccent
+                                    text: modelData.title
+                                }
+
+                                Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: 10
+                                    font.pixelSize: 24
+                                    color: currentAccent
+                                    text: "▶︎"
+
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            mediaView.currentTrack = index
+                                            mediaPlayer.play()
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
