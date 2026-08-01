@@ -165,6 +165,12 @@ Rectangle {
                 mediaPlayer.loops = (mediaPlayer.loops === MediaPlayer.Infinite) ? 1 : MediaPlayer.Infinite
             }
 
+            function formatTIme(ms) {
+                let seconds = Math.floor(ms / 1000)
+                let minutes = Math.floor(seconds / 60)
+                seconds = seconds % 60
+                return minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+            }
 
             MediaPlayer {
                 id: mediaPlayer
