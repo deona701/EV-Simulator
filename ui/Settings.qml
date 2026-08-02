@@ -1,8 +1,4 @@
 import QtQuick
-import QtQuick.Window
-import QtQuick.Layouts
-import ev_simulator
-import QtQuick.Shapes 1.15
 
 Rectangle {
     width: parent.width * 0.85

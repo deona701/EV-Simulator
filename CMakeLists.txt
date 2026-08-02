@@ -51,6 +51,11 @@ qt_add_qml_module(appev_simulator
             assets-music/psychronic-interstellar-dance-520116.mp3
             assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3
             assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3
+            QML_FILES ui/CenterScreenMAP.qml
+            QML_FILES ui/CenterScreenCAR.qml
+            QML_FILES ui/CenterScreenMEDIA.qml
+            RESOURCES
+            QML_FILES ui/CenterButtons.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
