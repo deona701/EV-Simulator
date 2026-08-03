@@ -41,22 +41,32 @@ qt_add_qml_module(appev_simulator
         ui/Temperature.qml
         ui/Seats.qml
         ui/Settings.qml
+        ui/CenterScreenMAP.qml
+        ui/CenterScreenCAR.qml
+        ui/CenterScreenMEDIA.qml
+        ui/CenterButtons.qml
+        assets-car/TeslaModelS.qml
     SOURCES
         backend/vehiclesimulator.h
         backend/vehiclesimulator.cpp
-        RESOURCES
-            assets-music/audioknap-industrial-516087.mp3
-            assets-music/mondamusic-synthwave-572999.mp3
-            assets-music/monume-cyberpunk-519219.mp3
-            assets-music/psychronic-interstellar-dance-520116.mp3
-            assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3
-            assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3
-            QML_FILES ui/CenterScreenMAP.qml
-            QML_FILES ui/CenterScreenCAR.qml
-            QML_FILES ui/CenterScreenMEDIA.qml
-            RESOURCES
-            QML_FILES ui/CenterButtons.qml
+    RESOURCES
+        assets-music/audioknap-industrial-516087.mp3
+        assets-music/mondamusic-synthwave-572999.mp3
+        assets-music/monume-cyberpunk-519219.mp3
+        assets-music/psychronic-interstellar-dance-520116.mp3
+        assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3
+        assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3
+        RESOURCES assets-car/car_assets.qrc
 )
+
+# Compile the car assets into a standalone binary resource file (.rcc)
+qt_add_binary_resources(car_rcc
+    assets-car/car_assets.qrc
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/car_assets.rcc
+)
+
+# Make sure the binary resource is built before the main app executable
+add_dependencies(appev_simulator car_rcc)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

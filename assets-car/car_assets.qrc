@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/qt/qml/ev_simulator/assets-car">
+        <file>meshes/plane_002_mesh.mesh</file>
+        <file>meshes/plane_003_mesh.mesh</file>
+        <file>meshes/plane_009_mesh.mesh</file>
+        <file>meshes/plane_011_mesh.mesh</file>
+        <file>meshes/plane_012_mesh.mesh</file>
+        <file>meshes/plane_016_mesh.mesh</file>
+        <file>meshes/plane_040_mesh.mesh</file>
+        <file>meshes/tesla_002_mesh.mesh</file>
+        <file>meshes/tesla_003_mesh.mesh</file>
+        <file>meshes/tesla_004_mesh.mesh</file>
+        <file>meshes/tesla_005_mesh.mesh</file>
+        <file>meshes/tesla_007_mesh.mesh</file>
+        <file>meshes/tesla_009_mesh.mesh</file>
+        <file>meshes/tesla_010_mesh.mesh</file>
+        <file>meshes/tesla_011_mesh.mesh</file>
+        <file>meshes/tesla_012_mesh.mesh</file>
+        <file>meshes/tesla_013_mesh.mesh</file>
+        <file>meshes/tyres_mesh.mesh</file>
+    </qresource>
+</RCC>
