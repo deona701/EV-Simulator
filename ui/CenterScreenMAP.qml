@@ -6,7 +6,6 @@ import QtQuick.Effects
 // NAVIGATION
 Rectangle {
     anchors.fill: parent
-    visible: root.activeView === "MAP"
     color: bgPrimary
     radius: 10
     border.color: currentAccent

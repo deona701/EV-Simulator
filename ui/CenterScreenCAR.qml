@@ -3,7 +3,6 @@ import QtQuick
 // CAR
 Item {
     anchors.fill: parent
-    visible: root.activeView === "CAR"
 
     Text {
         text: "CAR"

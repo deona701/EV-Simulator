@@ -5,7 +5,6 @@ import QtMultimedia
 Item {
     id: mediaView
     anchors.fill: parent
-    visible: root.activeView === "MEDIA"
 
     property int currentTrack: 0
     property var playlist: [
