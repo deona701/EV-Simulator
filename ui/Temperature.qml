@@ -19,7 +19,7 @@ Rectangle {
         Text {
             text: tempCard.targetTemp.toFixed(0) + "°C"
             color: currentAccent
-            font.pixelSize: 20
+            font.pixelSize: 30
             font.bold: true
             anchors.verticalCenter: parent.verticalCenter
         }
@@ -29,8 +29,8 @@ Rectangle {
 
             // Decrease Button
             Rectangle {
-                width: 20
-                height: 20
+                width: 40
+                height: 40
                 radius: 6
                 color: "transparent"
                 border.color: currentAccent
@@ -53,8 +53,8 @@ Rectangle {
 
             // Increase Button
             Rectangle {
-                width: 20
-                height: 20
+                width: 40
+                height: 40
                 radius: 6
                 color: "transparent"
                 border.color: currentAccent
