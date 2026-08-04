@@ -41,7 +41,11 @@ Rectangle {
 
         // Temperature
         Text {
-
+            text: tempCard.targetTemp.toFixed(0) + "°C"
+            color: currentAccent
+            font.pixelSize: 20
+            font.bold: true
+            verticalAlignment: Text.AlignVCenter
         }
 
         // Increase Button
@@ -63,7 +67,7 @@ Rectangle {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: if (tempCard.targetTemp > 16)
+                onClicked: if (tempCard.targetTemp < 30)
                     tempCard.targetTemp += 1.0
             }
         }
