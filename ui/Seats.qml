@@ -11,4 +11,23 @@ Rectangle {
     border.color: currentAccent
     border.width: 2
     radius: 10
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            seatsCard.seatState = (seatsCard.seatState + 1) % 4
+        }
+    }
+
+    Column {
+        anchors.centerIn: parent
+        spacing: 4
+
+        Text {
+            text: seatsCard.stateNames[seatsCard.seatState]
+            color: currentAccent
+            font.pixelSize: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+    }
 }
