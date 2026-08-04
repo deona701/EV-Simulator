@@ -2,7 +2,7 @@ import QtQuick
 
 Rectangle {
     id: tempCard
-    property real targetTemp
+    property real targetTemp: 20.0
 
     width: (parent.width - parent.spacing) / 2
     height: parent.height
