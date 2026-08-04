@@ -56,7 +56,8 @@ qt_add_qml_module(appev_simulator
         assets-music/psychronic-interstellar-dance-520116.mp3
         assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3
         assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3
-        RESOURCES assets-car/car_assets.qrc
+        assets-images/car-seat-svgrepo-com.svg
+        assets-car/car_assets.qrc
 )
 
 # Compile the car assets into a standalone binary resource file (.rcc)

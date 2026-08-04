@@ -23,6 +23,14 @@ Rectangle {
         anchors.centerIn: parent
         spacing: 4
 
+        Image {
+            source: "../assets-images/car-seat-svgrepo-com.svg"
+            width: 32
+            height: 32
+            fillMode: Image.PreserveAspectFit
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
         Text {
             text: seatsCard.stateNames[seatsCard.seatState]
             color: currentAccent
