@@ -315,22 +315,6 @@ Node {
             ]
         }
         Model {
-            id: plane_012
-            objectName: "Plane.012"
-            position: Qt.vector3d(-246.962, 61.3538, 6.09856e-06)
-            rotation: Qt.quaternion(0.703487, -0.703487, 0.071455, -0.071455)
-            scale: Qt.vector3d(89.9426, 89.9426, 89.9426)
-            source: "meshes/plane_012_mesh.mesh"
-            materials: [
-                metal_gray_material,
-                grid_material,
-                frontPlaqueImage_material,
-                floor_material,
-                plastic_black_material,
-                white_material
-            ]
-        }
-        Model {
             id: tyres
             objectName: "tyres"
             position: Qt.vector3d(-7.81737, 0, 0)
@@ -365,17 +349,6 @@ Node {
             ]
         }
         Model {
-            id: plane_030
-            objectName: "Plane.030"
-            position: Qt.vector3d(-153.247, 94.3694, 0)
-            rotation: Qt.quaternion(-0.5, 0.5, 0.5, 0.5)
-            scale: Qt.vector3d(100, 100, 100)
-            source: "meshes/plane_016_mesh.mesh"
-            materials: [
-                plastic_black_material
-            ]
-        }
-        Model {
             id: tesla_012
             objectName: "tesla.012"
             position: Qt.vector3d(0, 2.5996, 0)
@@ -400,16 +373,6 @@ Node {
                 plastic_black_material,
                 metal_gray_material,
                 backights_off_material
-            ]
-        }
-        Model {
-            id: emissions
-            objectName: "emissions"
-            rotation: Qt.quaternion(0.707107, -0.707107, 0, 0)
-            scale: Qt.vector3d(100, 100, 100)
-            source: "meshes/plane_040_mesh.mesh"
-            materials: [
-                material_material
             ]
         }
         PerspectiveCamera {
