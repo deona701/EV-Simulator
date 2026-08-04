@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 
 Rectangle {
     id: root
@@ -23,18 +24,22 @@ Rectangle {
         border.color: currentAccent
         border.width: 2
 
-        Loader {
+        StackLayout {
             anchors.fill: parent
             anchors.margins: 2
 
-            source: {
+            currentIndex: {
                 switch (root.activeView) {
-                case "MAP":     return "CenterScreenMAP.qml"
-                case "CAR":     return "CenterScreenCAR.qml"
-                case "MEDIA":   return "CenterScreenMEDIA.qml"
-                default:        return "CenterScreenMAP.qml"
+                case "MAP":     return 0
+                case "CAR":     return 1
+                case "MEDIA":   return 2
+                default:        return 0
                 }
             }
+
+            CenterScreenMAP { }
+            CenterScreenCAR { }
+            CenterScreenMEDIA { }
         }
     }
 
