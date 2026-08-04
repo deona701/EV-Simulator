@@ -15,60 +15,64 @@ Rectangle {
         anchors.centerIn: parent
         spacing: 15
 
-        // Decrease Button
-        Rectangle {
-            width: 20
-            height: 20
-            radius: 6
-            color: "transparent"
-            border.color: currentAccent
-            border.width: 1
-
-            Text {
-                text: "-"
-                color: currentAccent
-                anchors.centerIn: parent
-                font.bold: true
-                font.pixelSize: 18
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: if (tempCard.targetTemp > 16)
-                    tempCard.targetTemp -= 1.0
-            }
-        }
-
         // Temperature
         Text {
             text: tempCard.targetTemp.toFixed(0) + "°C"
             color: currentAccent
             font.pixelSize: 20
             font.bold: true
-            verticalAlignment: Text.AlignVCenter
+            anchors.verticalCenter: parent.verticalCenter
         }
 
-        // Increase Button
-        Rectangle {
-            width: 20
-            height: 20
-            radius: 6
-            color: "transparent"
-            border.color: currentAccent
-            border.width: 1
+        Column {
+            spacing: 10
 
-            Text {
-                text: "+"
-                color: currentAccent
-                anchors.centerIn: parent
-                font.bold: true
-                font.pixelSize: 18
+            // Decrease Button
+            Rectangle {
+                width: 20
+                height: 20
+                radius: 6
+                color: "transparent"
+                border.color: currentAccent
+                border.width: 1
+
+                Text {
+                    text: "-"
+                    color: currentAccent
+                    anchors.centerIn: parent
+                    font.bold: true
+                    font.pixelSize: 18
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: if (tempCard.targetTemp > 16)
+                        tempCard.targetTemp -= 1.0
+                }
             }
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: if (tempCard.targetTemp < 30)
-                    tempCard.targetTemp += 1.0
+            // Increase Button
+            Rectangle {
+                width: 20
+                height: 20
+                radius: 6
+                color: "transparent"
+                border.color: currentAccent
+                border.width: 1
+
+                Text {
+                    text: "+"
+                    color: currentAccent
+                    anchors.centerIn: parent
+                    font.bold: true
+                    font.pixelSize: 18
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: if (tempCard.targetTemp < 30)
+                        tempCard.targetTemp += 1.0
+                }
             }
         }
     }
