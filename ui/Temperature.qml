@@ -37,7 +37,7 @@ Rectangle {
                 border.width: 1
 
                 Text {
-                    text: "-"
+                    text: "+"
                     color: currentAccent
                     anchors.centerIn: parent
                     font.bold: true
@@ -46,8 +46,8 @@ Rectangle {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: if (tempCard.targetTemp > 16)
-                        tempCard.targetTemp -= 1.0
+                    onClicked: if (tempCard.targetTemp < 30)
+                        tempCard.targetTemp += 1.0
                 }
             }
 
@@ -61,7 +61,7 @@ Rectangle {
                 border.width: 1
 
                 Text {
-                    text: "+"
+                    text: "-"
                     color: currentAccent
                     anchors.centerIn: parent
                     font.bold: true
@@ -70,8 +70,8 @@ Rectangle {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: if (tempCard.targetTemp < 30)
-                        tempCard.targetTemp += 1.0
+                    onClicked: if (tempCard.targetTemp > 16)
+                        tempCard.targetTemp -= 1.0
                 }
             }
         }
