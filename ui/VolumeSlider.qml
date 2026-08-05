@@ -13,6 +13,7 @@ Rectangle {
     border.width: 2
 
     Row {
+        id: barsRow
         anchors.centerIn: parent
         height: parent.height * 0.6
         spacing: 5
@@ -31,10 +32,10 @@ Rectangle {
     }
 
     MouseArea {
-        anchors.fill: parent
+        anchors.fill: barsRow
 
         function updateVolume(mouse) {
-            var calculated = Math.round((mouse.x / width) * seatsCard.totalBars)
+            var calculated = Math.round((mouse.x / barsRow.width) * seatsCard.totalBars)
             seatsCard.currentVolume = Math.max(0, Math.min(seatsCard.totalBars, calculated))
         }
 
