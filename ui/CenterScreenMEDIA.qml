@@ -4,7 +4,6 @@ import QtMultimedia
 // MEDIA
 Item {
     id: mediaView
-    anchors.fill: parent
 
     property int currentTrack: 0
     property var playlist: [

@@ -4,8 +4,6 @@ import "../assets-car"
 
 // CAR
 Item {
-    anchors.fill: parent
-
     Text {
         text: "CAR"
         color: currentAccent

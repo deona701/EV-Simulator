@@ -5,7 +5,6 @@ import QtQuick.Effects
 
 // NAVIGATION
 Rectangle {
-    anchors.fill: parent
     color: bgPrimary
     radius: 10
     border.color: currentAccent
