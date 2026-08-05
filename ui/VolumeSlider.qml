@@ -4,6 +4,9 @@ Rectangle {
     id: volumeCard
     property int totalBars: 15
     property int currentVolume: 5
+    readonly property real normalizedVolume: currentVolume / totalBars
+    signal volumeChanged(real newVolume)
+
     width: parent.width * 0.85
     height: parent.height * 0.32
     anchors.horizontalCenter: parent.horizontalCenter

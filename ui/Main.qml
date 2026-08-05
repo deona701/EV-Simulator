@@ -2,7 +2,8 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Layouts
 import ev_simulator
-import QtQuick.Shapes 1.15
+import QtQuick.Shapes
+import QtMultimedia
 
 Window {
     // Core Color Palette
@@ -62,6 +63,7 @@ Window {
 
             CenterScreen {
                 anchors.fill: parent
+                volume: volumeSlider.normalizedVolume
             }
         }
 
@@ -77,7 +79,9 @@ Window {
                 topPadding: 20
 
                 // VOLUME SLIDER
-                VolumeSlider {}
+                VolumeSlider {
+                    id: volumeSlider
+                }
 
                 Row {
                     width: parent.width * 0.85

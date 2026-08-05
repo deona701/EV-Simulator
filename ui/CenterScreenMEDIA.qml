@@ -6,6 +6,7 @@ Item {
     id: mediaView
 
     property int currentTrack: 0
+    property real volume: 0.5
     property var playlist: [
         { title: "Industrial", url: Qt.resolvedUrl("../assets-music/audioknap-industrial-516087.mp3") },
         { title: "Synthwave", url: Qt.resolvedUrl("../assets-music/mondamusic-synthwave-572999.mp3") },
@@ -14,6 +15,18 @@ Item {
         { title: "Dark Synthwave (Black Neon)", url: Qt.resolvedUrl("../assets-music/turtlebeats-dark-synthwave-black-neon-251690.mp3") },
         { title: "Dark Synthwave (Spectral)", url: Qt.resolvedUrl("../assets-music/turtlebeats-dark-synthwave-spectral-251688.mp3") }
     ]
+
+    AudioOutput {
+        id: audioOutput
+        volume: mediaView.volume
+    }
+
+    MediaPlayer {
+        id: mediaPlayer
+        audioOutput: audioOutput
+
+        source: mediaView.playlist[mediaView.currentTrack].url
+    }
 
     function togglePlayPause() {
         if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
@@ -42,13 +55,6 @@ Item {
         let minutes = Math.floor(seconds / 60)
         seconds = seconds % 60
         return minutes + ":" + (seconds < 10 ? "0" : "") + seconds
-    }
-
-    MediaPlayer {
-        id: mediaPlayer
-        audioOutput: AudioOutput { volume: 0.8 }
-
-        source: mediaView.playlist[mediaView.currentTrack].url
     }
 
     Rectangle {

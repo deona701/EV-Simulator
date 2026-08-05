@@ -4,6 +4,7 @@ import QtQuick.Layouts
 Rectangle {
     id: root
     property string activeView: "MAP"
+    property real volume: 0.5
 
     width: parent.width - 50
     height: parent.height
@@ -39,7 +40,8 @@ Rectangle {
 
             CenterScreenMAP { }
             CenterScreenCAR { }
-            CenterScreenMEDIA { }
+            CenterScreenMEDIA {
+                volume: root.volume }
         }
     }
 
