@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Effects
 
 Rectangle {
     id: seatsCard
@@ -29,7 +30,15 @@ Rectangle {
             height: 32
             fillMode: Image.PreserveAspectFit
             anchors.horizontalCenter: parent.horizontalCenter
-        }
+
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                    brightness: 1.0
+                    colorization: 1.0
+                    colorizationColor: currentAccent
+                }
+            }
+
 
         Text {
             text: seatsCard.stateNames[seatsCard.seatState]
