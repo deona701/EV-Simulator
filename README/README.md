@@ -12,8 +12,12 @@
 * **Tesla Model S** by [neilnextlobo](https://www.cgtrader.com/designers/neilnextlobo) 
 on CGTrader (Royalty-Free License)
 
-Special thank you to the hard work they put in.
+### Image Assets
+* **Car Seat SVG Vector** by [game-icons.net](https://www.svgrepo.com/author/game-icons.net/)
+on SVGRepo (CC Attribution License)
 
+Special thank you to the hard work they put in.
+https://game-icons.net/?ref=svgrepo.com
 
 
 ## Information About My Project
