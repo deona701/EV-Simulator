@@ -1,7 +1,7 @@
 import QtQuick
 
 Rectangle {
-    id: seatsCard
+    id: volumeCard
     property int totalBars: 15
     property int currentVolume: 5
     width: parent.width * 0.85
@@ -19,14 +19,14 @@ Rectangle {
         spacing: 5
 
         Repeater {
-            model: seatsCard.totalBars
+            model: volumeCard.totalBars
 
             Rectangle {
                 anchors.bottom: parent.bottom
                 width: 10
                 height: 6 + (index * 6)
                 color: currentAccent
-                opacity: index < seatsCard.currentVolume ? 1.0 : 0.2
+                opacity: index < volumeCard.currentVolume ? 1.0 : 0.2
             }
         }
     }
@@ -35,8 +35,8 @@ Rectangle {
         anchors.fill: barsRow
 
         function updateVolume(mouse) {
-            var calculated = Math.round((mouse.x / barsRow.width) * seatsCard.totalBars)
-            seatsCard.currentVolume = Math.max(0, Math.min(seatsCard.totalBars, calculated))
+            var calculated = Math.round((mouse.x / barsRow.width) * volumeCard.totalBars)
+            volumeCard.currentVolume = Math.max(0, Math.min(volumeCard.totalBars, calculated))
         }
 
         onClicked: (mouse) => updateVolume(mouse)
