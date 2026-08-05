@@ -29,4 +29,18 @@ Rectangle {
             }
         }
     }
+
+    MouseArea {
+        anchors.fill: parent
+
+        function updateVolume(mouse) {
+            var calculated = Math.round((mouse.x / width) * seatsCard.totalBars)
+            seatsCard.currentVolume = Math.max(0, Math.min(seatsCard.totalBars, calculated))
+        }
+
+        onClicked: (mouse) => updateVolume(mouse)
+        onPositionChanged: (mouse) => {
+            if (pressed) updateVolume(mouse)
+        }
+    }
 }
